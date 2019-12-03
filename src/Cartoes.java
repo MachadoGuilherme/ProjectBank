@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Cartoes extends Cliente{
+public class Cartoes {
 
     private int numeroCartao = 0;
     private String nomeCartao = "";
@@ -12,6 +12,7 @@ public class Cartoes extends Cliente{
     private int pagamentoCartaoCredito = 0;
     private int valorPagar = 0;
     private String marcaCartao = "MasterBank";
+    private Cliente cl;
 
     int quantidadeCompras;
     int numCartao;
@@ -20,10 +21,10 @@ public class Cartoes extends Cliente{
     int menuOperacaoCartaoCredito;
 //================================================================================================================
     public void addNewCartao(){
-        //Cliente cl = new Cliente();
+        Cliente cl = new Cliente();
         Scanner entrada = new Scanner(System.in);
 
-        System.out.println("\n\tGerar Cartão para o Cliente " + getNomeCliente() + "\n");
+        System.out.println("\n\tGerar Cartão para o Cliente " + cl.getNomeCliente() + "\n");
             do{
                 System.out.println("0 - Voltar");
                 System.out.println("1 - Cartão de Débito/Credito");
@@ -279,6 +280,13 @@ public class Cartoes extends Cliente{
     }
     public void setMarcaCartao(String marcaCartao) {
         this.marcaCartao = marcaCartao;
+    }
+
+    public Cliente getCl(){
+        return cl;
+    }
+    public void setCl(Cliente cl){
+        this.cl = cl;
     }
 //================================================================================================================
 }

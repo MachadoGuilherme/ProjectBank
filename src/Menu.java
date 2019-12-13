@@ -179,7 +179,25 @@ public class Menu {
                                         System.out.println("\n\tOpcao Invalida!\n");
                                     }
                                     else{
-                                        //...
+                                        if (opcaoMenuContas == 1){
+                                            ContaOrdem co = new ContaOrdem();
+                                            listaConta.add(co);
+                                            System.out.println("\nConta Ordem Criada Com Sucesso!\nNumero de Conta: " + co.getNumeroDeConta() + "\n");
+                                        }
+                                        /*
+                                        if (opcaoMenuContas == 2){
+                                            ContaPolpanca cp = new ContaPolpanca();
+                                            listaConta.add(cp);
+                                            System.out.println("\nConta Polpança Criada Com Sucesso!\nNumero de Conta: " + co.getNumeroDeConta() + "\n");
+                                        }
+                                         */
+                                        if (opcaoMenuContas == 3){
+                                            System.out.println("\n\tVer Todas as Contas");
+                                            for (int i=0; i < listaConta.size(); i++){
+                                                Conta c = (Conta) listaConta.get(i);
+                                                c.informacao();
+                                            }
+                                        }
                                     }
                                 }while (opcaoMenuContas != 0);
                             }//----------Fim da opcaoMenuBanco 4----------
@@ -192,6 +210,25 @@ public class Menu {
         }while(opcaoMenuInicial != 0);
         System.out.println("\n### Até a Proxima! ###\n");
 //====================================================================================================================
+    }
+//====================================================================================================================
+    private int entradaInteiro(String mensagem){
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("\n" + mensagem);
+        int inteiro = entrada.nextInt();
+        return inteiro;
+    }
+//====================================================================================================================
+    private void escolheContaAtiva(){
+        int n = entradaInteiro("Numero de Conta: ");
+        Conta c = pesquisaConta(n);
+
+        if (c == null){
+            contaCli = c;
+        }
+        else {
+            System.out.println("\nConta Inexistente\n");
+        }
     }
 //====================================================================================================================
     private Conta pesquisaConta(int numeroConta){
@@ -207,6 +244,32 @@ public class Menu {
         }
         return cont;
     }
+//====================================================================================================================
+private Cliente pesquisarCliente(int numeroCliente) {
+
+    Cliente cli = null;
+
+    for (int i = 0; i < listaClientes.size(); i++) {
+        Cliente c = (Cliente) listaClientes.get(i);
+
+        if ( c.getNumeroCliente() == numeroCliente) {
+            cli = c;
+        }
+    }
+    return cli;
+}
+//====================================================================================================================
+    private void associarClienteConta() {
+        int numeroCliente = entradaInteiro("Digite o Numero de cliente: ");
+	    Cliente cli = pesquisarCliente(numeroCliente);
+
+	    if ( cli != null ) {
+	        contaCli.setCli(cli);
+	        }
+	    else {
+	        System.out.println("\nCliente inexistente\n");
+	        }
+	    }
 //====================================================================================================================
     public void addCliente(Cliente cl){
 

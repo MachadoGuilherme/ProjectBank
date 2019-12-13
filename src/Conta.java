@@ -1,9 +1,12 @@
+import java.util.Scanner;
+
 public abstract class Conta {
 
     private static int nextNumber = 0;
 
     private int numeroDeConta;
     private double saldoConta;
+    private String mensagemDaUltimaOperacao;
 
     private Cliente cli;
 //======================================================================================================
@@ -35,19 +38,38 @@ public abstract class Conta {
         //return true;
     }
 //======================================================================================================
+    public double lerValor(String mensagem) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println(mensagem);
+        double v = input.nextDouble();
+        return v;
+    }
+//======================================================================================================
     public Cliente getCli() {
+
         return cli;
     }
     public void setCli(Cliente cli) {
+
         this.cli = cli;
     }
 
     public int getNumeroDeConta() {
+
         return numeroDeConta;
     }
 
     public double getSaldoConta() {
+
         return saldoConta;
+    }
+    public String getMensagemDaUltimaOperacao() {
+        return mensagemDaUltimaOperacao;
+    }
+
+    public void setMensagemDaUltimaOperacao(String mensagemDaUltimaOperacao) {
+        this.mensagemDaUltimaOperacao = mensagemDaUltimaOperacao;
     }
 //======================================================================================================
 }

@@ -25,4 +25,29 @@ public abstract class Conta {
         }
     }
 //======================================================================================================
+    public void depositar(double valor){
+        saldoConta = saldoConta + valor;
+    }
+//======================================================================================================
+    public void levantamento(double valor){
+        saldoConta = saldoConta - valor;
+        System.out.println("\tLevantamento Efetuado!\n");
+        //return true;
+    }
+//======================================================================================================
+    public Cliente getCli() {
+        return cli;
+    }
+    public void setCli(Cliente cli) {
+        this.cli = cli;
+    }
+
+    public int getNumeroDeConta() {
+        return numeroDeConta;
+    }
+
+    public double getSaldoConta() {
+        return saldoConta;
+    }
+//======================================================================================================
 }

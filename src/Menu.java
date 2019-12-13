@@ -6,11 +6,15 @@ public class Menu {
     private String nome;
     ArrayList listaClientes;
     ArrayList listaCartoes;
+    ArrayList listaConta;
+    Conta contaCli;
 
     public Menu(String nome) {
         this.nome = nome;
         listaClientes = new ArrayList();
         listaCartoes = new ArrayList();
+        listaConta = new ArrayList();
+        contaCli = null;
     }
 //====================================================================================================================
     public void inicioSistema() {
@@ -23,6 +27,7 @@ public class Menu {
         int opcaoMenuCliente;
         int opcaoMenuBanco;
         int opcaoMenuCartao;
+        int opcaoMenuContas;
         int numCliente;
 
         Cliente cl = new Cliente();
@@ -93,16 +98,18 @@ public class Menu {
                         System.out.println("1 - Cadastro de Cliente");
                         System.out.println("2 - Alterar dados de um Cliente");
                         System.out.println("3 - Cartões de Débito e/ou Credito");
+                        System.out.println("4 - Contas");
                         System.out.print("\nEscolha a Opção Desejada: ");
                         opcaoMenuBanco = entrada.nextInt();
 
-                        if(opcaoMenuBanco < 0 || opcaoMenuBanco > 3) {
+                        if(opcaoMenuBanco < 0 || opcaoMenuBanco > 4) {
                             System.out.println("\n\tOpcao Invalida!\n");
                         }
                         else{
                             if(opcaoMenuBanco == 1){
-                                cl.cadastroCliente();
-                                listaClientes.add(cl);
+                                inserirCliente();
+                                //cl.cadastroCliente();
+                                //listaClientes.add(cl);
                             }//----------Fim da opcaoMenuBanco 1----------
                             if(opcaoMenuBanco == 2){
                                 System.out.print("\nDigite o Numero do Cliente: ");
@@ -157,7 +164,25 @@ public class Menu {
                                         }
                                     }while (opcaoMenuCartao != 0);
                                 }
-                            }
+                            }//----------Fim da opcaoMenuBanco 3----------
+                            if (opcaoMenuBanco == 4){
+                                System.out.println("\n\tContas");
+                                do{
+                                    System.out.println("\n0 - Voltar");
+                                    System.out.println("1 - Criar Conta Ordem");
+                                    System.out.println("2 - Criar Conta Polpança");
+                                    System.out.println("3 - Consultar Conta");
+                                    System.out.print("\nEscolha a Opção Desejada: ");
+                                    opcaoMenuContas = entrada.nextInt();
+
+                                    if(opcaoMenuContas < 0 || opcaoMenuContas > 3) {
+                                        System.out.println("\n\tOpcao Invalida!\n");
+                                    }
+                                    else{
+                                        //...
+                                    }
+                                }while (opcaoMenuContas != 0);
+                            }//----------Fim da opcaoMenuBanco 4----------
                         }
                     }while(opcaoMenuBanco != 0);
                 }//----------Fim da opcaoMenuInicial 3----------
@@ -169,7 +194,31 @@ public class Menu {
 //====================================================================================================================
     }
 //====================================================================================================================
+    private Conta pesquisaConta(int numeroConta){
+        Conta cont = null;
 
+        for(int i=0; i < listaConta.size(); i++){
+            Conta con = (Conta) listaConta.get(i);
+
+            if(con.getNumeroDeConta() == numeroConta){
+                cont = con;
+                break;
+            }
+        }
+        return cont;
+    }
+//====================================================================================================================
+    public void addCliente(Cliente cl){
+
+        listaClientes.add(cl);
+    }
+//====================================================================================================================
+    private void inserirCliente(){
+        Cliente newCliente = new Cliente();
+        newCliente.cadastroCliente();
+
+        addCliente(newCliente);
+    }
 //====================================================================================================================
     public void infoBank(){
         System.out.println("\n\t*** Informações ***\n");

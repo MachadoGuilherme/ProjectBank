@@ -54,15 +54,12 @@ public class Menu {
                 }//----------Fim da opcaoMenuInicial 1----------
 //====================================================================================================================
                 if(opcaoMenuInicial == 2) {
-
                     System.out.println("\n\t*** Area do Cliente ***\n");
+                    System.out.println("Para Acessar Entre Com Os Dados\n");
                     System.out.print("Digite o Numero de Cliente: ");
                     numCliente = entrada.nextInt();
 
-                    if(numCliente != contaCli.getCli().getNumeroCliente()){
-                        System.out.println("\n\tNumero de Cliente Invalido ou Inexistente!\n");
-                    }
-                    else{
+                    if(contaCli != null && contaCli.getCli() != null && contaCli.getCli().getNumeroCliente() == numCliente){
                         do {
                             System.out.println("\n0 - Voltar");
                             System.out.println("1 - Operações");
@@ -89,6 +86,9 @@ public class Menu {
                             }
                         }while(opcaoMenuCliente != 0);
                     }
+                    else{
+                        System.out.println("\n\tNumero de Cliente Invalido ou Inexistente!");
+                    }
                 }//----------Fim da opcaoMenuInicial 2----------
 //====================================================================================================================
                 if(opcaoMenuInicial == 3) {
@@ -114,25 +114,19 @@ public class Menu {
                                 //listaClientes.add(cl);
                             }//----------Fim da opcaoMenuBanco 1----------
                             if(opcaoMenuBanco == 2){
-                                System.out.print("\nDigite o Numero do Cliente: ");
-                                numCliente = entrada.nextInt();
-
-                                if(numCliente != contaCli.getCli().getNumeroCliente()){
-                                    System.out.println("\n\tNumero de Cliente Invalido ou Inexistente!\n");
-                                }
-                                else{
+                                if (contaCli != null && contaCli.getCli() != null){
                                     contaCli.getCli().editarDadosClienteBanco();
+                                }
+                                else {
+                                    System.out.println("\n\t>>> Você Deve Associar Um Cliente No Menu Contas <<<");
                                 }
                             }//----------Fim da opcaoMenuBanco 2----------
                             if(opcaoMenuBanco == 3){
-                                System.out.println("\n\tCartões");
+                                System.out.println("\n\tMenu Cartões");
                                 System.out.print("\nDigite o Numero do Cliente: ");
                                 numCliente = entrada.nextInt();
 
-                                if(numCliente != contaCli.getCli().getNumeroCliente()){
-                                    System.out.println("\n\tNumero de Cliente Invalido ou Inexistente!\n");
-                                }
-                                else{
+                                if(contaCli != null && contaCli.getCli() != null && contaCli.getCli().getNumeroCliente() == numCliente){
                                     do{
                                         System.out.println("\n0 - Voltar");
                                         System.out.println("1 - Gerar Cartão");
@@ -165,6 +159,9 @@ public class Menu {
                                             }
                                         }
                                     }while (opcaoMenuCartao != 0);
+                                }
+                                else{
+                                    System.out.println("\n\tNumero de Cliente Invalido ou Inexistente!");
                                 }
                             }//----------Fim da opcaoMenuBanco 3----------
                             if (opcaoMenuBanco == 4){
@@ -214,10 +211,12 @@ public class Menu {
                                             }
                                         }
                                         if (opcaoMenuContas == 4){
+                                            System.out.println("\n\tEscolher Conta");
                                             escolheContaAtiva();
                                         }
                                         if (opcaoMenuContas == 5){
                                             if (contaCli != null){
+                                                System.out.println("\n\tAssociar Cliente");
                                                 associarClienteConta();
                                             }
                                             else{
@@ -269,14 +268,14 @@ public class Menu {
     }
 //====================================================================================================================
     private void escolheContaAtiva(){
-        int n = entradaInteiro("\tEscolher Conta\n\nNumero de Conta: ");
+        int n = entradaInteiro("Numero de Conta: ");
         Conta c = pesquisaConta(n);
 
         if (c != null){
             contaCli = c;
         }
         else {
-            System.out.println("\nConta Inexistente\n");
+            System.out.println("\nConta Invalida ou Inexistente\n");
         }
     }
 //====================================================================================================================
@@ -309,14 +308,14 @@ private Cliente pesquisarCliente(int numeroCliente) {
 }
 //====================================================================================================================
     private void associarClienteConta() {
-        int numeroCliente = entradaInteiro("\tAssociar Cliente\n\nDigite o Numero de cliente: ");
+        int numeroCliente = entradaInteiro("Digite o Numero de cliente: ");
 	    Cliente cli = pesquisarCliente(numeroCliente);
 
 	    if ( cli != null ) {
 	        contaCli.setCli(cli);
 	        }
 	    else {
-	        System.out.println("\nCliente inexistente");
+	        System.out.println("\nCliente Invalido ou Inexistente");
 	        }
 	    }
 //====================================================================================================================

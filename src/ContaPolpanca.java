@@ -8,12 +8,12 @@ public class ContaPolpanca extends Conta {
     }
 //=================================================================================================================
     public boolean levantar(int valor){
-        setMensagemDaUltimaOperacao("\tAinda Não Pode Realizar Levantamentos!\n");
+        setMensagemDaUltimaOperacao("\n\tAinda Não Pode Realizar Levantamentos");
         return false;
     }
 //=================================================================================================================
     public void fazerLevantamento(){
-        System.out.println("\tNão é Possivel Realizar Levantamentos\n");
+        System.out.println("\n\tNão é Possivel Realizar Levantamentos");
     }
 //=================================================================================================================
     public void fazerDeposito(){

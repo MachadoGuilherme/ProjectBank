@@ -21,7 +21,7 @@ public class Cartoes {
     int menuOperacaoCartaoCredito;
 //================================================================================================================
     public void addNewCartao(){
-        Cliente cl = new Cliente();
+        //Cliente cl = new Cliente();
         Scanner entrada = new Scanner(System.in);
 
         System.out.println("\n\tGerar Cartão para o Cliente " + cl.getNomeCliente() + "\n");
@@ -63,7 +63,7 @@ public class Cartoes {
     }
 //================================================================================================================
     public void operacoesCartaoCredito(){
-        Cliente cl = new Cliente();
+        //Cliente cl = new Cliente();
         Scanner entrada = new Scanner(System.in);
 
         setSaldoCartaoCredito((getLimiteCartao() - getComprasCartaoCredito()) + getPagamentoCartaoCredito());
@@ -145,7 +145,7 @@ public class Cartoes {
     }
 //================================================================================================================
     public void consultaCartoes(){
-        Cliente cl = new Cliente();
+        //Cliente cl = new Cliente();
 
         setSaldoCartaoCredito((getLimiteCartao() - getComprasCartaoCredito()) + getPagamentoCartaoCredito());
 
@@ -162,7 +162,7 @@ public class Cartoes {
     }
 //================================================================================================================
     public void alterarLimite(){
-        Cliente cl = new Cliente();
+        //Cliente cl = new Cliente();
         Scanner entrada = new Scanner(System.in);
 
         if(getTipoCartao() == "DEBITO"){
@@ -189,7 +189,7 @@ public class Cartoes {
     }
 //================================================================================================================
     public void editarCartao(){
-        Cliente cl = new Cliente();
+        //Cliente cl = new Cliente();
         Scanner entrada = new Scanner(System.in);
 
         if(getNumeroCartao() == 0){
@@ -286,6 +286,7 @@ public class Cartoes {
         return cl;
     }
     public void setCl(Cliente cl){
+
         this.cl = cl;
     }
 //================================================================================================================

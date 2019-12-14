@@ -9,14 +9,14 @@ public class ContaOrdem extends Conta{
     }
 //================================================================================================================
     public void fazerLevantaento(){
-        levantamento(lerValor("Valor Levantamento: "));
+        levantamento(lerValor("\nValor Levantamento: "));
     }
 //================================================================================================================
     public void fazerDeposito(){
-        depositar(lerValor("Valor A Depositar: "));
+        depositar(lerValor("\nValor A Depositar: "));
     }
 //================================================================================================================
-public boolean levantar(double valor) {
+public boolean levantar(int valor) {
 
     boolean conseguiuLevantar = true;
 

@@ -171,7 +171,7 @@ public class Menu {
                                     System.out.println("\n0 - Voltar");
                                     System.out.println("1 - Criar Conta Ordem");
                                     System.out.println("2 - Criar Conta Polpança");
-                                    System.out.println("3 - Consultar Conta");
+                                    System.out.println("3 - Consultar Contas");
                                     System.out.println("4 - Escolher Conta");
                                     System.out.println("5 - Associar Cliente a Conta");
 
@@ -179,7 +179,7 @@ public class Menu {
                                         System.out.println("6 - Depositar");
                                         System.out.println("7 - Levantar");
                                         //System.out.println("8 - Saldo");
-                                        System.out.println("\nConta: " + contaCli.getNumeroDeConta());
+                                        System.out.println("\nConta " + contaCli.getNumeroDeConta() + " Está Selecionada.");
                                     }
 
                                     System.out.print("\nEscolha a Opção Desejada: ");
@@ -192,15 +192,15 @@ public class Menu {
                                         if (opcaoMenuContas == 1){
                                             ContaOrdem co = new ContaOrdem();
                                             listaConta.add(co);
-                                            System.out.println("\nConta Ordem Criada Com Sucesso!\nNumero de Conta: " + co.getNumeroDeConta() + "\n");
+                                            System.out.println("\nConta Ordem Criada Com Sucesso!\nNumero de Conta: " + co.getNumeroDeConta());
                                         }
                                         if (opcaoMenuContas == 2){
                                             ContaPolpanca cp = new ContaPolpanca();
                                             listaConta.add(cp);
-                                            System.out.println("\nConta Polpança Criada Com Sucesso!\nNumero de Conta: " + cp.getNumeroDeConta() + "\n");
+                                            System.out.println("\nConta Polpança Criada Com Sucesso!\nNumero de Conta: " + cp.getNumeroDeConta());
                                         }
                                         if (opcaoMenuContas == 3){
-                                            System.out.println("\n\tVer Todas as Contas");
+                                            System.out.println("\n\tVer Todas as Contas\n");
                                             for (int i=0; i < listaConta.size(); i++){
                                                 Conta c = (Conta) listaConta.get(i);
                                                 c.informacao();
@@ -214,7 +214,7 @@ public class Menu {
                                                 associarClienteConta();
                                             }
                                             else{
-                                                System.out.println("\n\t>>> Você Deve Ativar Uma Conta Na Opção 4 <<<\n");
+                                                System.out.println("\n\t>>> Você Deve Ativar Uma Conta Na Opção 4 <<<");
                                             }
                                         }
                                         if (opcaoMenuContas == 6){
@@ -222,7 +222,7 @@ public class Menu {
                                                 fazDeposito();
                                             }
                                             else{
-                                                System.out.println("\n\t>>> Você Deve Ativar Uma Conta Na Opção 4 <<<\n");
+                                                System.out.println("\n\t>>> Você Deve Ativar Uma Conta Na Opção 4 <<<");
                                             }
                                         }
                                         if (opcaoMenuContas == 7){
@@ -230,7 +230,7 @@ public class Menu {
                                                 fazLevantamento();
                                             }
                                             else{
-                                                System.out.println("\n\t>>> Você Deve Ativar Uma Conta Na Opção 4 <<<\n");
+                                                System.out.println("\n\t>>> Você Deve Ativar Uma Conta Na Opção 4 <<<");
                                             }
                                         }
                                     }
@@ -262,10 +262,10 @@ public class Menu {
     }
 //====================================================================================================================
     private void escolheContaAtiva(){
-        int n = entradaInteiro("Numero de Conta: ");
+        int n = entradaInteiro("\tEscolher Conta\n\nNumero de Conta: ");
         Conta c = pesquisaConta(n);
 
-        if (c == null){
+        if (c != null){
             contaCli = c;
         }
         else {
@@ -302,14 +302,14 @@ private Cliente pesquisarCliente(int numeroCliente) {
 }
 //====================================================================================================================
     private void associarClienteConta() {
-        int numeroCliente = entradaInteiro("Digite o Numero de cliente: ");
+        int numeroCliente = entradaInteiro("\tAssociar Cliente\n\nDigite o Numero de cliente: ");
 	    Cliente cli = pesquisarCliente(numeroCliente);
 
 	    if ( cli != null ) {
 	        contaCli.setCli(cli);
 	        }
 	    else {
-	        System.out.println("\nCliente inexistente\n");
+	        System.out.println("\nCliente inexistente");
 	        }
 	    }
 //====================================================================================================================

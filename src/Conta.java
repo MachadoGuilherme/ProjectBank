@@ -5,7 +5,7 @@ public abstract class Conta {
     private static int nextNumber = 0;
 
     private int numeroDeConta;
-    private double saldoConta;
+    private int saldoConta;
     private String mensagemDaUltimaOperacao;
 
     private Cliente cli;
@@ -19,36 +19,39 @@ public abstract class Conta {
     }
 //======================================================================================================
     public void informacao(){
-        System.out.println(toString() + "\n\tNumero De Conta: " + numeroDeConta);
+        System.out.println(toString() + "\nNumero De Conta: " + numeroDeConta);
         if (cli == null){
             System.out.println("\n\tSem Cliente Associado!\n");
         }
         else{
-            System.out.println("Cliente: " + cli.getNomeCliente());
+            //System.out.println("Cliente: " + cli.getNomeCliente());
+            cli.informacaoCliente();
         }
     }
 //======================================================================================================
-    public void depositar(double valor){
+    public void depositar(int valor){
         saldoConta = saldoConta + valor;
+        cli.setSaldoAtual((cli.getSaldoAtual()) + saldoConta);
+        System.out.println("\tDeposito Efetuado!");
     }
     public void fazerDeposito(){
 
     }
 //======================================================================================================
-    public void levantamento(double valor){
+    public void levantamento(int valor){
         saldoConta = saldoConta - valor;
-        System.out.println("\tLevantamento Efetuado!\n");
+        System.out.println("\tLevantamento Efetuado!");
         //return true;
     }
     public void fazerLevantamento(){
 
     }
 //======================================================================================================
-    public double lerValor(String mensagem) {
+    public int lerValor(String mensagem) {
         Scanner input = new Scanner(System.in);
 
         System.out.println(mensagem);
-        double v = input.nextDouble();
+        int v = input.nextInt();
         return v;
     }
 //======================================================================================================
@@ -66,7 +69,7 @@ public abstract class Conta {
         return numeroDeConta;
     }
 
-    public double getSaldoConta() {
+    public int getSaldoConta() {
 
         return saldoConta;
     }

@@ -7,7 +7,7 @@ public class ContaPolpanca extends Conta {
         juros = 2.15;
     }
 //=================================================================================================================
-    public boolean levantar(double valor){
+    public boolean levantar(int valor){
         setMensagemDaUltimaOperacao("\tAinda Não Pode Realizar Levantamentos!\n");
         return false;
     }
@@ -25,8 +25,8 @@ public class ContaPolpanca extends Conta {
         System.out.println("Saldo: " + getSaldoConta());
     }
 //=================================================================================================================
-    public double getSaldo(){
-        double s = super.getSaldoConta();
+    public int getSaldo(){
+        int s = super.getSaldoConta();
         s *= juros;
         return s;
     }

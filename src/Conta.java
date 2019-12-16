@@ -40,6 +40,7 @@ public abstract class Conta {
 //======================================================================================================
     public void levantamento(int valor){
         saldoConta = saldoConta - valor;
+        cli.setSaldoAtual((cli.getSaldoAtual()) - saldoConta);
         System.out.println("\tLevantamento Efetuado!");
         //return true;
     }

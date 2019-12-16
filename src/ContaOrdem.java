@@ -8,7 +8,7 @@ public class ContaOrdem extends Conta{
         super.informacao();
     }
 //================================================================================================================
-    public void fazerLevantaento(){
+    public void fazerLevantamento(){
         levantamento(lerValor("\nValor Levantamento: "));
     }
 //================================================================================================================

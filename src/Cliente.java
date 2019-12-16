@@ -54,7 +54,7 @@ public class Cliente {
         ++proximoCliente;
         numeroCliente = proximoCliente;
 
-        System.out.println("\nNumero de Cliente: " + getNumeroCliente());
+        System.out.println("\nCliente " + getNomeCliente() + " Cadastrado Com Sucesso!\nNumero de Cliente: " + getNumeroCliente());
     }
 //============================================================================================================
     public void editarDadosClienteBanco(){

@@ -10,17 +10,17 @@ public class Cliente {
     private static int proximoCliente = 0;
     private int saldoInicial = 0;
     private int saldoAtual = 0;
+
+    private Cartoes ca;
 //============================================================================================================
     public void informacaoCliente(){
-        Cartoes ca = new Cartoes();
-
         System.out.println("Numero de Cliente: " + getNumeroCliente());
         System.out.println("Nome: " + getNomeCliente());
         System.out.println("Telefone: " + getTelefone());
         System.out.println("e-mail: " + getEmail());
         System.out.println("Profissão: " + getProfissao());
 
-        if (ca.getLimiteCartao() != 0) {
+        if (ca != null) {
             System.out.println("Cartão: " + ca.getTipoCartao());
             System.out.println("Limite Atual do Cartão é: " + ca.getLimiteCartao() + "€");
             System.out.println("Saldo Disponivel: " + ca.getSaldoCartaoCredito() + "€");
@@ -130,6 +130,13 @@ public class Cliente {
     }
     public void setSaldoAtual(int saldoAtual) {
         this.saldoAtual = saldoAtual;
+    }
+
+    public Cartoes getCa() {
+        return ca;
+    }
+    public void setCa(Cartoes ca) {
+        this.ca = ca;
     }
 //============================================================================================================
 }

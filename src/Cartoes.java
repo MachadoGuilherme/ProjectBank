@@ -1,17 +1,19 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Cartoes {
+public abstract class Cartoes {
 
-    private int numeroCartao = 0;
-    private String nomeCartao = "";
-    private String tipoCartao = "DEBITO";
-    private int limiteCartao = 0;
-    private int saldoCartaoCredito = 0;
-    private int comprasCartaoCredito = 0;
-    private int pagamentoCartaoCredito = 0;
-    private int valorPagar = 0;
-    private String marcaCartao = "MasterBank";
+    private static int nextNumber = 0;
+
+    private int idCartao;
+    private int numeroCartao;
+    private String nomeCartao;
+    private String tipoCartao;
+    private int limiteCartao;
+    private int saldoCartaoCredito;
+    private int comprasCartaoCredito;
+    private int pagamentoCartaoCredito;
+    private int valorPagar;
+    private String marcaCartao;
     private Cliente cl;
 
     int quantidadeCompras;
@@ -20,11 +22,16 @@ public class Cartoes {
     int opcaoAddCartao;
     int menuOperacaoCartaoCredito;
 //================================================================================================================
+    public Cartoes(){
+        ++nextNumber;
+        idCartao = nextNumber;
+
+        cl = null;
+    }
+//================================================================================================================
     public void addNewCartao(){
-        //Cliente cl = new Cliente();
         Scanner entrada = new Scanner(System.in);
 
-        System.out.println("\n\tGerar Cartão para o Cliente " + cl.getNomeCliente() + "\n");
             do{
                 System.out.println("0 - Voltar");
                 System.out.println("1 - Cartão de Débito/Credito");
@@ -37,6 +44,7 @@ public class Cartoes {
                 }
                 else{
                     if(opcaoAddCartao == 1){
+
                         System.out.print("\nDigite o Nome a ser Impresso no Cartão: ");
                         setNomeCartao(entrada.next().toUpperCase());
                         System.out.print("Digite os Numeros do Cartão: ");
@@ -49,6 +57,7 @@ public class Cartoes {
                     }
                     //---------------------------------------------------------------------------------------------
                     if(opcaoAddCartao == 2){
+
                         System.out.print("\nDigite o Nome a ser Impresso no Cartão: ");
                         setNomeCartao(entrada.next().toUpperCase());
                         System.out.print("Digite os Numeros do Cartão: ");
@@ -145,9 +154,8 @@ public class Cartoes {
     }
 //================================================================================================================
     public void consultaCartoes(){
-        //Cliente cl = new Cliente();
 
-        setSaldoCartaoCredito((getLimiteCartao() - getComprasCartaoCredito()) + getPagamentoCartaoCredito());
+        //setSaldoCartaoCredito((getLimiteCartao() - getComprasCartaoCredito()) + getPagamentoCartaoCredito());
 
         System.out.println("\n\tConsulta de Cartões\n");
         System.out.println("\nCliente: " + cl.getNomeCliente());
@@ -289,5 +297,12 @@ public class Cartoes {
 
         this.cl = cl;
     }
-//================================================================================================================
+
+    public int getIdCartao() {
+        return idCartao;
+    }
+    public void setIdCartao(int idCartao) {
+        this.idCartao = idCartao;
+    }
+    //================================================================================================================
 }

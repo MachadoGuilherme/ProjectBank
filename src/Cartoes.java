@@ -19,107 +19,12 @@ public abstract class Cartoes {
     int quantidadeCompras;
     int numCartao;
     int numCartaoLimite;
-    int menuOperacaoCartaoCredito;
 //================================================================================================================
     public Cartoes(){
         ++nextNumber;
         idCartao = nextNumber;
 
         cl = null;
-    }
-//================================================================================================================
-    public void addNewCartaoDebito(){
-        Scanner entrada = new Scanner(System.in);
-
-        System.out.println("Nome no Cartão De Debito: ");
-        nomeCartao = entrada.next().toUpperCase();
-        System.out.println("Numero do Cartão De Debito: ");
-        numeroCartao = entrada.nextInt();
-    }
-    public void newCartaoDebito(){
-
-    }
-//================================================================================================================
-    public void operacoesCartaoCredito(){
-
-        Scanner entrada = new Scanner(System.in);
-
-        setSaldoCartaoCredito((getLimiteCartao() - getComprasCartaoCredito()) + getPagamentoCartaoCredito());
-
-        if(getTipoCartao() == "DEBITO"){
-            System.out.println("\nCliente Não Possui Cartão de Credito!\n");
-        }
-        else {
-            do{
-                System.out.println("\n0 - Voltar");
-                System.out.println("1 - Compras");
-                System.out.println("2 - Pagamentos");
-                System.out.println("3 - Consultar Saldo");
-                System.out.print("\nEscolha a Opção Desejada: ");
-                menuOperacaoCartaoCredito = entrada.nextInt();
-
-                if(menuOperacaoCartaoCredito < 0 || menuOperacaoCartaoCredito > 3){
-                    System.out.println("\n\tOpcao Invalida!\n");
-                }
-                else{
-                    if(menuOperacaoCartaoCredito == 1){
-                        System.out.println("\n\tCompras\n");
-                        System.out.println("Cliente: " + cl.getNomeCliente());
-                        System.out.println("Cartão: " + getMarcaCartao());
-                        System.out.println("Numero do Cartão: " + getNumeroCartao());
-                        System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito() + "€");
-                        System.out.println("Limite Atual do Cartão: " + getLimiteCartao() + "€");
-                        System.out.print("\nQuantas Compras Quer Pagar: ");
-                        quantidadeCompras = entrada.nextInt();
-                        System.out.print("\n");
-
-                        for(int i = 1; i <= quantidadeCompras; i++){
-                            System.out.print("Conta Numero " + i + " de Valor: ");
-                            comprasCartaoCredito = entrada.nextInt();
-
-                            if(this.comprasCartaoCredito > this.saldoCartaoCredito || this.comprasCartaoCredito > this.limiteCartao){
-                                System.out.println("\n\tSaldo Insuficiente!\n");
-                            }
-                            else {
-                                setSaldoCartaoCredito(getLimiteCartao() - getComprasCartaoCredito());
-                                System.out.println("Pagamento Efetuado");
-                                System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito() + "€\n");
-                            }
-                        }
-                    }
-                    if (menuOperacaoCartaoCredito == 2){
-                        System.out.println("\n\tPagamento Cartão Credito\n");
-                        System.out.println("Cartão: " + getMarcaCartao());
-                        System.out.println("Numero do Cartão: " + getNumeroCartao());
-                        System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito() + "€");
-                        if (getSaldoCartaoCredito() == getLimiteCartao()){
-                            System.out.println("\n\tNão Tem Valores a Pagar!\n");
-                        }
-                        else{
-                            valorPagar = getLimiteCartao() - getSaldoCartaoCredito();
-                            System.out.println("\n\tTens a Pagar: " + valorPagar + "€");
-                            System.out.print("\nQuanto Quer Pagar: ");
-                            pagamentoCartaoCredito = entrada.nextInt();
-                            if (pagamentoCartaoCredito > valorPagar){
-                                System.out.println("\n\tValor É Maior Que o Valor a Pagar!\n");
-                            }
-                            else{
-                                saldoCartaoCredito = pagamentoCartaoCredito + saldoCartaoCredito;
-                                System.out.println("Pagamento Efetuado");
-                                System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito() + "€\n");
-                            }
-                        }
-                    }
-                    if(menuOperacaoCartaoCredito == 3){
-                        System.out.println("\nCliente: " + cl.getNomeCliente());
-                        System.out.println("Cartão: " + getMarcaCartao());
-                        System.out.println("Numero do Cartão: " + getNumeroCartao());
-                        System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito() + "€");
-                        System.out.println("Limite Atual do Cartão: " + getLimiteCartao() + "€");
-                    }
-                }
-            }while (menuOperacaoCartaoCredito != 0);
-        }
     }
 //================================================================================================================
     public void consultaCartoes(){
@@ -129,6 +34,58 @@ public abstract class Cartoes {
         System.out.println("Limite Atual do Cartão: " + getLimiteCartao());
         System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito());
         System.out.println("Tipo de Cartão: " + getTipoCartao());
+
+    }
+//================================================================================================================
+    public void compraCartao(){
+        Scanner entrada = new Scanner(System.in);
+
+        consultaCartoes();
+        System.out.print("\nQuantas Compras Quer Pagar: ");
+        quantidadeCompras = entrada.nextInt();
+        System.out.print("\n");
+
+        for(int i = 1; i <= quantidadeCompras; i++){
+            System.out.print("Conta Numero " + i + " de Valor: ");
+            comprasCartaoCredito = entrada.nextInt();
+
+            if(comprasCartaoCredito > saldoCartaoCredito || comprasCartaoCredito > limiteCartao){
+                System.out.println("\n\tSaldo Insuficiente!\n");
+            }
+            else {
+
+                setSaldoCartaoCredito(getLimiteCartao() - getComprasCartaoCredito());
+                System.out.println("Pagamento Efetuado!");
+                System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito() + "€\n");
+            }
+        }
+    }
+    public void fazerCompraCartao(){
+
+    }
+//====================================================================================================================
+    public void pagamentoCartao(){
+        Scanner entrada = new Scanner(System.in);
+
+        if (getSaldoCartaoCredito() == getLimiteCartao()){
+            System.out.println("\n\tNão Tem Valores a Pagar!\n");
+        }
+        else{
+            valorPagar = getLimiteCartao() - getSaldoCartaoCredito();
+            System.out.println("\n\tTens a Pagar: " + valorPagar + "€");
+            System.out.print("\nQuanto Quer Pagar: ");
+            pagamentoCartaoCredito = entrada.nextInt();
+            if (pagamentoCartaoCredito > valorPagar){
+                System.out.println("\n\tValor É Maior Que o Valor a Pagar!\n");
+            }
+            else{
+                saldoCartaoCredito = pagamentoCartaoCredito + saldoCartaoCredito;
+                System.out.println("Pagamento Efetuado");
+                System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito() + "€\n");
+            }
+        }
+    }
+    public void fazerPagamentoCartao(){
 
     }
 //================================================================================================================
@@ -142,7 +99,6 @@ public abstract class Cartoes {
         else{
             System.out.println("\n\tAlterar Limite do Cartão\n");
 
-            System.out.println("\nCliente: " + cl.getNomeCliente());
             System.out.print("\nDigite o Numero do Cartão a ser Alterado o Limite: ");
             numCartaoLimite = entrada.nextInt();
 

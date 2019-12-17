@@ -152,7 +152,7 @@ public class Menu {
                                 System.out.println("\n\tMenu Cartões");
                                 do{
                                     System.out.println("\n0 - Voltar");
-                                    System.out.println("1 - Gerar Cartão");
+                                    System.out.println("1 - Gerar Cartão de Credito");
                                     System.out.println("2 - Consultar Cartões");
                                     System.out.println("3 - Editar Cartão");
                                     System.out.println("4 - Alterar Limite");
@@ -165,31 +165,27 @@ public class Menu {
                                     }
                                     else {
                                         if(opcaoMenuCartao == 1){
-                                            do {
-                                                System.out.println("0 - Voltar");
-                                                System.out.println("1 - Cartão de Débito/Credito");
-                                                System.out.println("2 - Cartão de Débito");
-                                                System.out.print("\nEscolha a Opção Desejada: ");
-                                                opcaoAddCartao = entrada.nextInt();
+                                            CartaoCredito cac = new CartaoCredito();
 
-                                                if(opcaoAddCartao < 0 || opcaoAddCartao > 2){
-                                                    System.out.println("\n\tOpcao Invalida!\n");
-                                                }
-                                                else {
-                                                    if (opcaoAddCartao == 1){
+                                            System.out.println("\n\tGerar Cartão de Credito");
+                                            System.out.println("\nNome no Cartão: ");
+                                            cac.setNomeCartao(entrada.next().toUpperCase());
+                                            System.out.println("Numero do Cartão: ");
+                                            cac.setNumeroCartao(entrada.nextInt());
+                                            System.out.println("Limite do Cartão: ");
+                                            cac.setLimiteCartao(entrada.nextInt());
 
-                                                    }
-                                                    if (opcaoAddCartao == 2){
-                                                        CartaoDebito cad = new CartaoDebito();
-                                                        listaCartoes.add(cad);
-                                                        System.out.println("\nCartão de Debito Criado Com Sucesso!\nID do Cartão: " + cad.getIdCartao());
-                                                    }
-                                                }
-                                            }while (opcaoAddCartao != 0);
+                                            listaCartoes.add(cac);
+                                            System.out.println("\nCartão de Credito Criado Com Sucesso!\nID do Cartão: " + cac.getIdCartao());
+
                                         }
                                         if(opcaoMenuCartao == 2){
-                                            cartao.consultaCartoes();
-                                        }
+                                            System.out.println("\n\tConsulta de Cartões\n");
+                                            for (int i=0; i < listaCartoes.size(); i++){
+                                                Cartoes c = (Cartoes) listaCartoes.get(i);
+                                                c.consultaCartoes();
+                                            }
+                                        }/*
                                         if(opcaoMenuCartao == 3){
                                             cartao.editarCartao();
                                         }
@@ -198,7 +194,7 @@ public class Menu {
                                         }
                                         if(opcaoMenuCartao == 5){
                                             cartao.operacoesCartaoCredito();
-                                        }
+                                        }*/
                                     }
                                 }while (opcaoMenuCartao != 0);
                             }//----------Fim da opcaoMenuBanco 3----------
@@ -302,14 +298,8 @@ public class Menu {
 //====================================================================================================================
     }
 //====================================================================================================================
-    private void newCartaoDebito(){
-        Scanner entrada = new Scanner(System.in);
-
-        System.out.println("Nome no Cartão De Debito: ");
-        cartao.setNomeCartao(entrada.next().toUpperCase());
-        System.out.println("Numero do Cartão De Debito: ");
-        cartao.setNumeroCartao(entrada.nextInt());
-        cartao.setTipoCartao("Debito".toUpperCase());
+    private void novoCartaoDebito(){
+        cartao.newCartaoDebito();
     }
 //====================================================================================================================
     private void fazDeposito(){

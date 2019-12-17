@@ -5,21 +5,20 @@ public abstract class Cartoes {
     private static int nextNumber = 0;
 
     private int idCartao;
-    private int numeroCartao;
+    private int numeroCartao = 0;
     private String nomeCartao;
-    private String tipoCartao;
-    private int limiteCartao;
-    private int saldoCartaoCredito;
-    private int comprasCartaoCredito;
-    private int pagamentoCartaoCredito;
-    private int valorPagar;
-    private String marcaCartao;
+    private String tipoCartao = "CREDITO";
+    private int limiteCartao = 0;
+    private int saldoCartaoCredito = 0;
+    private int comprasCartaoCredito = 0;
+    private int pagamentoCartaoCredito = 0;
+    private int valorPagar = 0;
+    private String marcaCartao = "Master Bank";
     private Cliente cl;
 
     int quantidadeCompras;
     int numCartao;
     int numCartaoLimite;
-    int opcaoAddCartao;
     int menuOperacaoCartaoCredito;
 //================================================================================================================
     public Cartoes(){
@@ -29,50 +28,20 @@ public abstract class Cartoes {
         cl = null;
     }
 //================================================================================================================
-    public void addNewCartao(){
+    public void addNewCartaoDebito(){
         Scanner entrada = new Scanner(System.in);
 
-            do{
-                System.out.println("0 - Voltar");
-                System.out.println("1 - Cartão de Débito/Credito");
-                System.out.println("2 - Cartão de Débito");
-                System.out.print("\nEscolha a Opção Desejada: ");
-                opcaoAddCartao = entrada.nextInt();
+        System.out.println("Nome no Cartão De Debito: ");
+        nomeCartao = entrada.next().toUpperCase();
+        System.out.println("Numero do Cartão De Debito: ");
+        numeroCartao = entrada.nextInt();
+    }
+    public void newCartaoDebito(){
 
-                if(opcaoAddCartao < 0 || opcaoAddCartao > 2){
-                    System.out.println("\n\tOpcao Invalida!\n");
-                }
-                else{
-                    if(opcaoAddCartao == 1){
-
-                        System.out.print("\nDigite o Nome a ser Impresso no Cartão: ");
-                        setNomeCartao(entrada.next().toUpperCase());
-                        System.out.print("Digite os Numeros do Cartão: ");
-                        setNumeroCartao(entrada.nextInt());
-                        System.out.print("Qual o Limite Inicial do Cartão: ");
-                        setLimiteCartao(entrada.nextInt());
-
-                        setTipoCartao("Credito".toUpperCase());
-                        System.out.println("\n\tCartão " + getMarcaCartao() + " com Limite Inicial de: " + getLimiteCartao() + "€" + "\n\tCriado com Sucesso");
-                    }
-                    //---------------------------------------------------------------------------------------------
-                    if(opcaoAddCartao == 2){
-
-                        System.out.print("\nDigite o Nome a ser Impresso no Cartão: ");
-                        setNomeCartao(entrada.next().toUpperCase());
-                        System.out.print("Digite os Numeros do Cartão: ");
-                        setNumeroCartao(entrada.nextInt());
-
-                        setTipoCartao("Debito".toUpperCase());
-                        System.out.println("\n\tCartão " + getMarcaCartao() + "\n\tCriado com Sucesso");
-                    }
-                }
-                opcaoAddCartao = 0;
-            }while(opcaoAddCartao != 0);
     }
 //================================================================================================================
     public void operacoesCartaoCredito(){
-        //Cliente cl = new Cliente();
+
         Scanner entrada = new Scanner(System.in);
 
         setSaldoCartaoCredito((getLimiteCartao() - getComprasCartaoCredito()) + getPagamentoCartaoCredito());
@@ -155,22 +124,16 @@ public abstract class Cartoes {
 //================================================================================================================
     public void consultaCartoes(){
 
-        //setSaldoCartaoCredito((getLimiteCartao() - getComprasCartaoCredito()) + getPagamentoCartaoCredito());
-
-        System.out.println("\n\tConsulta de Cartões\n");
-        System.out.println("\nCliente: " + cl.getNomeCliente());
         System.out.println("Cartão: " + getMarcaCartao());
         System.out.println("Numero do Cartão: " + getNumeroCartao());
-        if(getLimiteCartao() != 0){
-            System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito());
-            System.out.println("Limite Atual do Cartão: " + getLimiteCartao());
-        }
+        System.out.println("Limite Atual do Cartão: " + getLimiteCartao());
+        System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito());
         System.out.println("Tipo de Cartão: " + getTipoCartao());
-        System.out.println("\n");
+
     }
 //================================================================================================================
     public void alterarLimite(){
-        //Cliente cl = new Cliente();
+
         Scanner entrada = new Scanner(System.in);
 
         if(getTipoCartao() == "DEBITO"){
@@ -197,7 +160,7 @@ public abstract class Cartoes {
     }
 //================================================================================================================
     public void editarCartao(){
-        //Cliente cl = new Cliente();
+
         Scanner entrada = new Scanner(System.in);
 
         if(getNumeroCartao() == 0){

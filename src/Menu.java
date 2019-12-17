@@ -204,10 +204,10 @@ public class Menu {
                                             cartao.alterarLimite();
                                         }*/
                                         if(opcaoMenuCartao == 5){
-                                            //if (cartao != null){
+                                            if (cartao != null){
                                             System.out.println("\n\tOperações\n");
                                                 do {
-                                                    System.out.println("\n0 - Voltar");
+                                                    System.out.println("0 - Voltar");
                                                     System.out.println("1 - Compras");
                                                     System.out.println("2 - Pagamentos");
                                                     System.out.println("3 - Consultar Saldo");
@@ -223,19 +223,19 @@ public class Menu {
                                                             fazCompraCartao();
                                                         }
                                                         if (menuOperacaoCartaoCredito == 2){
-                                                            System.out.println("\n\tPagamento Cartão Credito\n");
+                                                            System.out.println("\n\tPagamento Cartão Credito");
                                                             fazPagamentoCartao();
                                                         }
                                                         if (menuOperacaoCartaoCredito == 3){
-                                                            System.out.println("Saldo Atual no Cartão: " + cartao.getSaldoCartaoCredito() + "€");
-                                                            System.out.println("Limite Atual do Cartão: " + cartao.getLimiteCartao() + "€");
+                                                            System.out.println("\nSaldo Atual no Cartão: " + cartao.getSaldoCartaoCredito() + "€");
+                                                            System.out.println("Limite Atual do Cartão: " + cartao.getLimiteCartao() + "€\n");
                                                         }
                                                     }
                                                 }while (menuOperacaoCartaoCredito != 0);
-                                            //}
-                                            /*else {
-                                                System.out.println("\nCliente Não Possui Cartão de Credito!");
-                                            }*/
+                                            }
+                                            else {
+                                                System.out.println("\n\tNão Existe Cartão Associado!");
+                                            }
                                         }
                                         if (opcaoMenuCartao == 6){
                                             if (contaCli != null){
@@ -378,7 +378,7 @@ public class Menu {
             cartao = ca;
         }
         else {
-            System.out.println("\nID do Cartão Invalido ou Inexistente\n");
+            System.out.println("\nID do Cartão Invalido ou Inexistente");
         }
     }
 //====================================================================================================================

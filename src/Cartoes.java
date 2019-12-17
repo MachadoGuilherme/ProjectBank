@@ -46,15 +46,15 @@ public abstract class Cartoes {
         System.out.print("\n");
 
         for(int i = 1; i <= quantidadeCompras; i++){
-            System.out.print("Conta Numero " + i + " de Valor: ");
+            System.out.print("Pagamento Numero " + i + " de Valor: ");
             comprasCartaoCredito = entrada.nextInt();
 
             if(comprasCartaoCredito > saldoCartaoCredito || comprasCartaoCredito > limiteCartao){
                 System.out.println("\n\tSaldo Insuficiente!\n");
             }
             else {
+                saldoCartaoCredito = saldoCartaoCredito - comprasCartaoCredito;
 
-                setSaldoCartaoCredito(getLimiteCartao() - getComprasCartaoCredito());
                 System.out.println("Pagamento Efetuado!");
                 System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito() + "€\n");
             }
@@ -68,10 +68,10 @@ public abstract class Cartoes {
         Scanner entrada = new Scanner(System.in);
 
         if (getSaldoCartaoCredito() == getLimiteCartao()){
-            System.out.println("\n\tNão Tem Valores a Pagar!\n");
+            System.out.println("\n\t>>> Não Tem Valores a Pagar! <<<\n");
         }
         else{
-            valorPagar = getLimiteCartao() - getSaldoCartaoCredito();
+            valorPagar = limiteCartao - saldoCartaoCredito;
             System.out.println("\n\tTens a Pagar: " + valorPagar + "€");
             System.out.print("\nQuanto Quer Pagar: ");
             pagamentoCartaoCredito = entrada.nextInt();

@@ -17,8 +17,6 @@ public abstract class Cartoes {
     private Cliente cl;
 
     int quantidadeCompras;
-    int numCartao;
-    int numCartaoLimite;
 //================================================================================================================
     public Cartoes(){
         ++nextNumber;
@@ -30,9 +28,10 @@ public abstract class Cartoes {
     public void consultaCartoes(){
 
         System.out.println("Cartão: " + getMarcaCartao());
+        System.out.println("Nome no Cartão: " + getNomeCartao());
         System.out.println("Numero do Cartão: " + getNumeroCartao());
-        System.out.println("Limite Atual do Cartão: " + getLimiteCartao());
-        System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito());
+        System.out.println("Limite do Cartão: " + getLimiteCartao() + "€");
+        System.out.println("Saldo no Cartão: " + getSaldoCartaoCredito() + "€");
         System.out.println("Tipo de Cartão: " + getTipoCartao());
 
     }
@@ -40,7 +39,6 @@ public abstract class Cartoes {
     public void compraCartao(){
         Scanner entrada = new Scanner(System.in);
 
-        consultaCartoes();
         System.out.print("\nQuantas Compras Quer Pagar: ");
         quantidadeCompras = entrada.nextInt();
         System.out.print("\n");
@@ -89,68 +87,36 @@ public abstract class Cartoes {
 
     }
 //================================================================================================================
-    public void alterarLimite(){
+    public void alterarLimiteCartao(){
 
         Scanner entrada = new Scanner(System.in);
 
-        if(getTipoCartao() == "DEBITO"){
-            System.out.println("\nCliente Não Possui Cartão de Credito!\n");
-        }
-        else{
-            System.out.println("\n\tAlterar Limite do Cartão\n");
+        System.out.println("Cartão: " + getMarcaCartao());
+        System.out.print("Limite Anterior: " + getLimiteCartao() + "€\nNovo Limite: ");
+        limiteCartao = entrada.nextInt();
 
-            System.out.print("\nDigite o Numero do Cartão a ser Alterado o Limite: ");
-            numCartaoLimite = entrada.nextInt();
+        saldoCartaoCredito = limiteCartao;
 
-            if (numCartaoLimite != getNumeroCartao()) {
-                System.out.println("\n\tNumero de Cartão Invalido ou Inexistente!\n");
-            }
-            else{
-                System.out.println("\nCartão: " + getMarcaCartao());
-                System.out.println("Limite Anterior: " + getLimiteCartao() + "\nNovo Limite: ");
-                limiteCartao = entrada.nextInt();
+        System.out.println("\nLimite Alterado com Sucesso!");
+    }
+    public void alteraLimiteCartao(){
 
-                System.out.println("\nLimite Alterado com Sucesso!");
-            }
-        }
     }
 //================================================================================================================
     public void editarCartao(){
 
         Scanner entrada = new Scanner(System.in);
 
-        if(getNumeroCartao() == 0){
-            System.out.println("\nCliente Não Possui Cartão!\n");
-        }
-        else{
-            System.out.println("\n\tEditar Cartões\n");
+        System.out.println("Cartão: " + getMarcaCartao());
+        System.out.print("Nome Anterior no Cartão: " + getNomeCartao() + "\nNovo Nome: ");
+        nomeCartao = entrada.next().toUpperCase();
+        System.out.print("Numero Anterior no Cartão: " + getNumeroCartao() + "\nNovo Numero: ");
+        numeroCartao = entrada.nextInt();
 
-            System.out.println("\nCliente: " + cl.getNomeCliente());
-            System.out.print("\nDigite o Numero do Cartão a ser Alterado: ");
-            numCartao = entrada.nextInt();
+        System.out.println("\nDados Alterado com Sucesso!");
+    }
+    public void editaCartao(){
 
-            if(numCartao != getNumeroCartao()){
-                System.out.println("\n\tNumero de Cartão Invalido ou Inexistente!\n");
-            }
-            else{
-                System.out.print("\nNome Anterior no Cartão: " + getNomeCartao() + "\nNovo Nome: ");
-                nomeCartao = entrada.next().toUpperCase();
-                System.out.print("Numero Anterior no Cartão: " + getNumeroCartao() + "\nNovo Numero: ");
-                numeroCartao = entrada.nextInt();
-                System.out.print("Tipo Anterior de Cartão: " + getTipoCartao() + "\nNovo Tipo: ");
-                setTipoCartao(entrada.next().toUpperCase());
-
-                if(getTipoCartao() != "DEBITO"){
-                    System.out.print("Qual o Limite do Cartão: ");
-                    setLimiteCartao(entrada.nextInt());
-                }
-                else{
-                    setLimiteCartao(0);
-                }
-
-                System.out.println("\nDados Alterado com Sucesso!");
-            }
-        }
     }
 //================================================================================================================
     public int getNumeroCartao() {

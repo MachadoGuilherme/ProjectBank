@@ -20,9 +20,9 @@ public class Cliente {
         System.out.println("e-mail: " + getEmail());
         System.out.println("Profissão: " + getProfissao());
 
-        if (ca.getIdCartao() != 0) {
+        if (ca != null) {
             System.out.println("Cartão: " + ca.getTipoCartao());
-            System.out.println("Limite Atual do Cartão é: " + ca.getLimiteCartao() + "€");
+            System.out.println("Limite do Cartão é: " + ca.getLimiteCartao() + "€");
             System.out.println("Saldo Disponivel: " + ca.getSaldoCartaoCredito() + "€");
         }
 

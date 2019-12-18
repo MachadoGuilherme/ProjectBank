@@ -196,13 +196,25 @@ public class Menu {
                                                 System.out.println("\n\tConsulta de Cartões\n");
                                                 c.consultaCartoes();
                                             }
-                                        }/*
+                                        }
                                         if(opcaoMenuCartao == 3){
-                                            cartao.editarCartao();
+                                            if (cartao != null){
+                                                System.out.println("\n\tEditar Cartão\n");
+                                                editarCartao();
+                                            }
+                                            else {
+                                                System.out.println("\n\tNão Existe Cartão Associado!");
+                                            }
                                         }
                                         if(opcaoMenuCartao == 4){
-                                            cartao.alterarLimite();
-                                        }*/
+                                            if (cartao != null){
+                                                System.out.println("\n\tAlterar Limite do Cartão\n");
+                                                alterarLimiteCartao();
+                                            }
+                                            else {
+                                                System.out.println("\n\tNão Existe Cartão Associado!");
+                                            }
+                                        }
                                         if(opcaoMenuCartao == 5){
                                             if (cartao != null){
                                             System.out.println("\n\tOperações\n");
@@ -354,6 +366,12 @@ public class Menu {
     }
     private void fazPagamentoCartao(){
         cartao.fazerPagamentoCartao();
+    }
+    private void alterarLimiteCartao(){
+        cartao.alteraLimiteCartao();
+    }
+    private void editarCartao(){
+        cartao.editaCartao();
     }
 //====================================================================================================================
     private void fazDeposito(){

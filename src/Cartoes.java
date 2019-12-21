@@ -8,11 +8,11 @@ public abstract class Cartoes {
     private int numeroCartao = 0;
     private String nomeCartao;
     private String tipoCartao = "CREDITO";
-    private int limiteCartao = 0;
-    private int saldoCartaoCredito = 0;
-    private int comprasCartaoCredito = 0;
-    private int pagamentoCartaoCredito = 0;
-    private int valorPagar = 0;
+    private double limiteCartao = 0;
+    private double saldoCartaoCredito = 0;
+    private double comprasCartaoCredito = 0;
+    private double pagamentoCartaoCredito = 0;
+    private double valorPagar = 0;
     private String marcaCartao = "Master Bank";
     private Cliente cl;
 
@@ -27,7 +27,7 @@ public abstract class Cartoes {
 //================================================================================================================
     public void consultaCartoes(){
 
-        System.out.println("Cartão: " + getMarcaCartao());
+        System.out.println("\n\tMeus Dados de Cartão\nCartão: " + getMarcaCartao());
         System.out.println("Nome no Cartão: " + getNomeCartao());
         System.out.println("Numero do Cartão: " + getNumeroCartao());
         System.out.println("Limite do Cartão: " + getLimiteCartao() + "€");
@@ -45,7 +45,7 @@ public abstract class Cartoes {
 
         for(int i = 1; i <= quantidadeCompras; i++){
             System.out.print("Pagamento Numero " + i + " de Valor: ");
-            comprasCartaoCredito = entrada.nextInt();
+            comprasCartaoCredito = entrada.nextDouble();
 
             if(comprasCartaoCredito > saldoCartaoCredito || comprasCartaoCredito > limiteCartao){
                 System.out.println("\n\tSaldo Insuficiente!\n");
@@ -72,7 +72,7 @@ public abstract class Cartoes {
             valorPagar = limiteCartao - saldoCartaoCredito;
             System.out.println("\n\tTens a Pagar: " + valorPagar + "€");
             System.out.print("\nQuanto Quer Pagar: ");
-            pagamentoCartaoCredito = entrada.nextInt();
+            pagamentoCartaoCredito = entrada.nextDouble();
             if (pagamentoCartaoCredito > valorPagar){
                 System.out.println("\n\tValor É Maior Que o Valor a Pagar!\n");
             }
@@ -93,7 +93,7 @@ public abstract class Cartoes {
 
         System.out.println("Cartão: " + getMarcaCartao());
         System.out.print("Limite Anterior: " + getLimiteCartao() + "€\nNovo Limite: ");
-        limiteCartao = entrada.nextInt();
+        limiteCartao = entrada.nextDouble();
 
         saldoCartaoCredito = limiteCartao;
 
@@ -140,31 +140,37 @@ public abstract class Cartoes {
         this.tipoCartao = tipoCartao;
     }
 
-    public int getLimiteCartao() {
+    public double getLimiteCartao() {
+
         return limiteCartao;
     }
-    public void setLimiteCartao(int limiteCartao) {
+    public void setLimiteCartao(double limiteCartao) {
+
         this.limiteCartao = limiteCartao;
     }
 
-    public int getSaldoCartaoCredito() {
+    public double getSaldoCartaoCredito() {
+
         return saldoCartaoCredito;
     }
-    public void setSaldoCartaoCredito(int saldoCartaoCredito) {
+    public void setSaldoCartaoCredito(double saldoCartaoCredito) {
+
         this.saldoCartaoCredito = saldoCartaoCredito;
     }
 
-    public int getComprasCartaoCredito() {
+    public double getComprasCartaoCredito() {
+
         return comprasCartaoCredito;
     }
-    public void setComprasCartaoCredito(int comprasCartaoCredito) {
+    public void setComprasCartaoCredito(double comprasCartaoCredito) {
         this.comprasCartaoCredito = comprasCartaoCredito;
     }
 
-    public int getPagamentoCartaoCredito() {
+    public double getPagamentoCartaoCredito() {
+
         return pagamentoCartaoCredito;
     }
-    public void setPagamentoCartaoCredito(int pagamentoCartaoCredito) {
+    public void setPagamentoCartaoCredito(double pagamentoCartaoCredito) {
         this.pagamentoCartaoCredito = pagamentoCartaoCredito;
     }
 

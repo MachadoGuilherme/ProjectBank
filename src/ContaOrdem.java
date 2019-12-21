@@ -4,15 +4,18 @@ public class ContaOrdem extends Conta{
         super();
     }
 //================================================================================================================
-    public void informacaoContaOrdem(){
+    public void informacao(){
         super.informacao();
+        System.out.println("\nSaldo Atual na Conta: " + getCli().getSaldoAtual() + "€");
     }
 //================================================================================================================
     public void fazerLevantamento(){
+
         levantamento(lerValor("\nValor Levantamento: "));
     }
 //================================================================================================================
     public void fazerDeposito(){
+
         depositar(lerValor("\nValor A Depositar: "));
     }
 //================================================================================================================
@@ -29,5 +32,9 @@ public boolean levantar(int valor) {
     }
     return conseguiuLevantar;
 }
+//================================================================================================================
+    public String toString(){
+        return new String("Conta Ordem");
+    }
 //================================================================================================================
 }

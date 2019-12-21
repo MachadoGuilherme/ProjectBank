@@ -5,7 +5,7 @@ public abstract class Conta {
     private static int nextNumber = 0;
 
     private int numeroDeConta;
-    private int saldoConta;
+    private double saldoConta;
     private String mensagemDaUltimaOperacao;
 
     private Cliente cli;
@@ -19,7 +19,7 @@ public abstract class Conta {
     }
 //======================================================================================================
     public void informacao(){
-        System.out.println("\t" + toString() + "\nNumero De Conta: " + numeroDeConta);
+        System.out.println("\nTipo de Conta: " + toString() + "\n\nNumero De Conta: " + numeroDeConta);
         if (cli == null){
             System.out.println("\n\tSem Cliente Associado!\n");
         }
@@ -28,7 +28,7 @@ public abstract class Conta {
         }
     }
 //======================================================================================================
-    public void depositar(int valor){
+    public void depositar(double valor){
         saldoConta = saldoConta + valor;
         cli.setSaldoAtual((cli.getSaldoAtual()) + saldoConta);
         System.out.println("\tDeposito Efetuado!");
@@ -37,7 +37,7 @@ public abstract class Conta {
 
     }
 //======================================================================================================
-    public void levantamento(int valor){
+    public void levantamento(double valor){
         saldoConta = saldoConta - valor;
         cli.setSaldoAtual((cli.getSaldoAtual()) - saldoConta);
         System.out.println("\tLevantamento Efetuado!");
@@ -69,7 +69,7 @@ public abstract class Conta {
         return numeroDeConta;
     }
 
-    public int getSaldoConta() {
+    public double getSaldoConta() {
 
         return saldoConta;
     }

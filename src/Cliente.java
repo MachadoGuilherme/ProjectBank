@@ -8,8 +8,8 @@ public class Cliente {
     private String profissao = "";
     private int numeroCliente = 0;
     private static int proximoCliente = 0;
-    private int saldoInicial = 0;
-    private int saldoAtual = 0;
+    private double saldoInicial = 0;
+    private double saldoAtual = 0;
 
     private Cartoes ca;
 //============================================================================================================
@@ -19,19 +19,12 @@ public class Cliente {
         System.out.println("Telefone: " + getTelefone());
         System.out.println("e-mail: " + getEmail());
         System.out.println("Profissão: " + getProfissao());
-
-        if (ca != null) {
-            System.out.println("Cartão: " + ca.getTipoCartao());
-            System.out.println("Limite do Cartão é: " + ca.getLimiteCartao() + "€");
-            System.out.println("Saldo Disponivel: " + ca.getSaldoCartaoCredito() + "€");
-        }
-
-        System.out.println("\nSaldo Atual na Conta: " + saldoAtual + "€");
     }
 //============================================================================================================
     public void cadastroCliente(){
         Scanner entrada = new Scanner(System.in);
 
+        System.out.println("\n\tCadastro de Cliente");
         System.out.print("\nNome: ");
         nomeCliente = entrada.nextLine().toUpperCase();
         System.out.print("Telefone: ");
@@ -42,7 +35,7 @@ public class Cliente {
         profissao = entrada.next().toUpperCase();
         do{
             System.out.print("\nSaldo Inicial: ");
-            saldoInicial = entrada.nextInt();
+            saldoInicial = entrada.nextDouble();
             if(saldoInicial < 100){
                 System.out.println("\n==> Saldo Inicial Deve Ser no Minimo 100€ <==");
             }
@@ -118,17 +111,21 @@ public class Cliente {
         this.numeroCliente = numeroCliente;
     }
 
-    public int getSaldoInicial() {
+    public double getSaldoInicial() {
+
         return saldoInicial;
     }
-    public void setSaldoInicial(int saldoInicial) {
+    public void setSaldoInicial(double saldoInicial) {
+
         this.saldoInicial = saldoInicial;
     }
 
-    public int getSaldoAtual() {
+    public double getSaldoAtual() {
+
         return saldoAtual;
     }
-    public void setSaldoAtual(int saldoAtual) {
+    public void setSaldoAtual(double saldoAtual) {
+
         this.saldoAtual = saldoAtual;
     }
 

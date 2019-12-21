@@ -63,8 +63,8 @@ public class Menu {
                     numCliente = entrada.nextInt();
 
                     if(contaCli != null && contaCli.getCli() != null && contaCli.getCli().getNumeroCliente() == numCliente){
+                        System.out.println("\nOlá " + contaCli.getCli().getNomeCliente());
                         do {
-                            System.out.println("\nOlá " + contaCli.getCli().getNomeCliente());
                             System.out.println("\n0 - Voltar");
                             System.out.println("1 - Operações");
                             System.out.println("2 - Meus Dados");
@@ -84,10 +84,13 @@ public class Menu {
                                         System.out.println("1 - Depositar");
                                         System.out.println("2 - Levantar");
                                         System.out.println("3 - Saldo");
+                                        if (cartao != null){
+                                            System.out.println("4 - Cartão Credito");
+                                        }
                                         System.out.print("\nEscolha a Opção Desejada: ");
                                         opcaoMenuOperacoes = entrada.nextInt();
 
-                                        if (opcaoMenuOperacoes < 0 || opcaoMenuOperacoes > 3){
+                                        if (opcaoMenuOperacoes < 0 || opcaoMenuOperacoes > 4){
                                             System.out.println("\n\tOpcao Invalida!\n");
                                         }
                                         else {
@@ -100,12 +103,46 @@ public class Menu {
                                             if (opcaoMenuOperacoes == 3){
                                                 System.out.println("Seu Saldo é: " + contaCli.getCli().getSaldoAtual() + "€");
                                             }
+                                            if (opcaoMenuOperacoes == 4){
+                                                if (cartao != null){
+                                                    System.out.println("\n\tOperações Cartão de Credito\n");
+                                                    do {
+                                                        System.out.println("0 - Voltar");
+                                                        System.out.println("1 - Compras");
+                                                        System.out.println("2 - Pagamentos");
+                                                        System.out.println("3 - Consultar Saldo");
+                                                        System.out.print("\nEscolha a Opção Desejada: ");
+                                                        menuOperacaoCartaoCredito = entrada.nextInt();
+
+                                                        if(menuOperacaoCartaoCredito < 0 || menuOperacaoCartaoCredito > 3){
+                                                            System.out.println("\n\tOpcao Invalida!\n");
+                                                        }
+                                                        else {
+                                                            if (menuOperacaoCartaoCredito == 1){
+                                                                System.out.println("\n\tCompras\n");
+                                                                fazCompraCartao();
+                                                            }
+                                                            if (menuOperacaoCartaoCredito == 2){
+                                                                System.out.println("\n\tPagamento Cartão Credito");
+                                                                fazPagamentoCartao();
+                                                            }
+                                                            if (menuOperacaoCartaoCredito == 3){
+                                                                System.out.println("\nSaldo Atual no Cartão: " + cartao.getSaldoCartaoCredito() + "€");
+                                                                System.out.println("Limite Atual do Cartão: " + cartao.getLimiteCartao() + "€\n");
+                                                            }
+                                                        }
+                                                    }while (menuOperacaoCartaoCredito != 0);
+                                                }
+                                            }
                                         }
                                     }while (opcaoMenuOperacoes != 0);
                                 }//----------Fim da opcaoMenuCliente 1----------
                                 if(opcaoMenuCliente == 2) {
-                                    System.out.println("\n\tMeus Dados\n");
-                                    contaCli.getCli().informacaoCliente();
+                                    System.out.println("\n\tMeus Dados");
+                                    contaCli.informacao();
+                                    if (cartao != null){
+                                        cartao.consultaCartoes();
+                                    }
                                 }//----------Fim da opcaoMenuCliente 2----------
                                 if(opcaoMenuCliente == 3){
                                     System.out.println("\n\tAlterar Meus Dados\n");
@@ -138,8 +175,6 @@ public class Menu {
                         else{
                             if(opcaoMenuBanco == 1){
                                 inserirCliente();
-                                //cl.cadastroCliente();
-                                //listaClientes.add(cl);
                             }//----------Fim da opcaoMenuBanco 1----------
                             if(opcaoMenuBanco == 2){
                                 if (contaCli != null && contaCli.getCli() != null){
@@ -307,7 +342,7 @@ public class Menu {
                                             System.out.println("\nConta Polpança Criada Com Sucesso!\nNumero de Conta: " + cp.getNumeroDeConta());
                                         }
                                         if (opcaoMenuContas == 3){
-                                            System.out.println("\n\tVer Todas as Contas\n");
+                                            System.out.println("\n\tVer Todas as Contas");
                                             for (int i=0; i < listaConta.size(); i++){
                                                 Conta c = (Conta) listaConta.get(i);
                                                 c.informacao();
@@ -476,6 +511,20 @@ private Cliente pesquisarCliente(int numeroCliente) {
         newCliente.cadastroCliente();
 
         addCliente(newCliente);
+    }
+//====================================================================================================================
+    public void gestorContaUm(){
+        System.out.println("\n\tCliente VIP\n\nO Gestor da Conta é\n");
+        System.out.println("Gestor: Hulk");
+        System.out.println("Telefone: 987 654 321\nRamal: 123");
+        System.out.println("e-mail: hulk@mybank.com");
+    }
+//====================================================================================================================
+    public void gestorContaDois(){
+        System.out.println("\n\tSeu Gestor de Conta Pessoal é\n");
+        System.out.println("Lucy");
+        System.out.println("Telefone: 001 002 003\nRamal: 321");
+        System.out.println("e-mail: lucy@mybank.com");
     }
 //====================================================================================================================
     public void infoBank(){

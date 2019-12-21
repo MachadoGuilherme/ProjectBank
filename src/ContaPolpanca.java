@@ -4,7 +4,7 @@ public class ContaPolpanca extends Conta {
 //=================================================================================================================
     public ContaPolpanca(){
         super();
-        juros = 2.15;
+        juros = 1.15;
     }
 //=================================================================================================================
     public boolean levantar(int valor){
@@ -13,22 +13,28 @@ public class ContaPolpanca extends Conta {
     }
 //=================================================================================================================
     public void fazerLevantamento(){
+
         System.out.println("\n\tNão é Possivel Realizar Levantamentos");
     }
 //=================================================================================================================
     public void fazerDeposito(){
+
         depositar(lerValor("Valor do Deposito: "));
     }
 //=================================================================================================================
-    public void informacaoContaPolpanca(){
+    public void informacao(){
         super.informacao();
-        System.out.println("Saldo: " + getSaldoConta());
+        System.out.println("\nSaldo Atual na Conta: " + getSaldo() + "€");
     }
 //=================================================================================================================
-    public int getSaldo(){
-        int s = super.getSaldoConta();
-        s *= juros;
+    public double getSaldo(){
+        double s = super.getCli().getSaldoAtual();
+        s = (s * juros) / 100 + s;
         return s;
+    }
+//=================================================================================================================
+    public String toString(){
+        return new String("Conta Polpança");
     }
 //=================================================================================================================
 }

@@ -532,7 +532,7 @@ private Cliente pesquisarCliente(int numeroCliente) {
         System.out.println("Banco My Bank" );
         System.out.println("Telefone: 123 456 789" );
         System.out.println("Captal Social: 1.000.000");
-        System.out.println("Endereço\nRua X\nNumero: 1234\nKnowhere");
+        System.out.println("\nEndereço\nRua X\nNumero: 1234\nDistrito: Knowhere");
         System.out.println("\nAll Rights Reserved");
     }
 //====================================================================================================================

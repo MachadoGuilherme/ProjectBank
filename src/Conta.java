@@ -19,7 +19,7 @@ public abstract class Conta {
     }
 //======================================================================================================
     public void informacao(){
-        System.out.println("\nTipo de Conta: " + toString() + "\n\nNumero De Conta: " + numeroDeConta);
+        System.out.println("\nTipo de Conta: " + toString() + "\nNumero De Conta: " + numeroDeConta);
         if (cli == null){
             System.out.println("\n\tSem Cliente Associado!\n");
         }

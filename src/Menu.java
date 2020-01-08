@@ -513,25 +513,11 @@ private Cliente pesquisarCliente(int numeroCliente) {
         addCliente(newCliente);
     }
 //====================================================================================================================
-    public void gestorContaUm(){
-        System.out.println("\n\tCliente VIP\n\nO Gestor da Conta é\n");
-        System.out.println("Gestor: Hulk");
-        System.out.println("Telefone: 987 654 321\nRamal: 123");
-        System.out.println("e-mail: hulk@mybank.com");
-    }
-//====================================================================================================================
-    public void gestorContaDois(){
-        System.out.println("\n\tSeu Gestor de Conta Pessoal é\n");
-        System.out.println("Lucy");
-        System.out.println("Telefone: 001 002 003\nRamal: 321");
-        System.out.println("e-mail: lucy@mybank.com");
-    }
-//====================================================================================================================
     public void infoBank(){
         System.out.println("\n\t*** Informações ***\n");
         System.out.println("Banco My Bank" );
         System.out.println("Telefone: 123 456 789" );
-        System.out.println("Captal Social: 1.000.000");
+        System.out.println("Captal Social: 1.000.000€");
         System.out.println("\nEndereço\nRua X\nNumero: 1234\nDistrito: Knowhere");
         System.out.println("\nAll Rights Reserved");
     }

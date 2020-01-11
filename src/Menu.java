@@ -324,7 +324,7 @@ public class Menu {
                                         }
                                         if (opcaoMenuCartao == 7){
                                             if (contaCli != null){
-                                                System.out.println("\n\tAssociar Cliente ao Cartão");
+                                                System.out.println("\n\tAssociar Cartão Para o Cliente " + contaCli.getCli().getNomeCliente());
                                                 associaClienteCartao();
                                             }
                                             else{

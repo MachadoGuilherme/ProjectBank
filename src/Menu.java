@@ -32,7 +32,7 @@ public class Menu {
         int opcaoMenuContas;
         int numCliente;
         int opcaoMenuOperacoes;
-        int opcaoAddCartao;
+        int opcaoMenuCli;
         int menuOperacaoCartaoCredito;
 
         Cliente cl = new Cliente();
@@ -162,41 +162,68 @@ public class Menu {
 
                     do{
                         System.out.println("\n0 - Voltar");
-                        System.out.println("1 - Cadastro de Cliente");
-                        System.out.println("2 - Alterar dados de um Cliente");
-                        System.out.println("3 - Apagar um Cliente");
-                        System.out.println("4 - Cartões");
-                        System.out.println("5 - Contas");
+                        System.out.println("1 - Cliente");
+                        System.out.println("2 - Cartões");
+                        System.out.println("3 - Contas");
+
                         System.out.print("\nEscolha a Opção Desejada: ");
                         opcaoMenuBanco = entrada.nextInt();
 
-                        if(opcaoMenuBanco < 0 || opcaoMenuBanco > 5) {
+                        if(opcaoMenuBanco < 0 || opcaoMenuBanco > 3) {
                             System.out.println("\n\tOpcao Invalida!");
                         }
                         else{
-                            if(opcaoMenuBanco == 1){
-                                inserirCliente();
+                            if (opcaoMenuBanco == 1){
+                                System.out.println("\n\tMenu Cliente");
+                                do {
+                                    System.out.println("\n0 - Voltar");
+                                    System.out.println("1 - Cadastro de Cliente");
+                                    System.out.println("2 - Alterar dados de um Cliente");
+                                    System.out.println("3 - Apagar um Cliente");
+
+                                    if (contaCli != null && contaCli.getCli() != null) {
+                                        System.out.println("\nCliente " + contaCli.getCli().getNomeCliente());
+                                        System.out.println("Conta " + contaCli.getNumeroDeConta() + " Está Selecionada");
+                                    }
+
+                                    System.out.print("\nEscolha a Opção Desejada: ");
+                                    opcaoMenuCli = entrada.nextInt();
+
+                                    if (opcaoMenuCli < 0 || opcaoMenuCli > 3) {
+                                        System.out.println("\n\tOpcao Invalida!");
+                                    }
+                                    else {
+                                        if (opcaoMenuCli == 1) {
+                                            inserirCliente();
+                                            criaContaOrdem();
+                                            System.out.println("\n\tConfirme o Numero de Conta Deste Cliente");
+                                            escolheContaAtiva();
+                                            System.out.println("\n\tConfirme o Numero Deste Cliente");
+                                            associarClienteConta();
+                                        }//----------Fim da opcaoMenuCli 1----------
+                                        if (opcaoMenuCli == 2) {
+                                            if (contaCli != null && contaCli.getCli() != null) {
+                                                contaCli.getCli().editarDadosClienteBanco();
+                                            } else {
+                                                System.out.println("\n\t>>> Você Deve Associar Um Cliente No Menu Contas <<<");
+                                            }
+                                        }//----------Fim da opcaoMenuCli 2----------
+                                        if (opcaoMenuCli == 3) {
+                                            System.out.println("\n\tApagar Cliente");
+                                            apagarCliente();
+                                        }
+                                    }
+                                }while (opcaoMenuCli != 0) ;
                             }//----------Fim da opcaoMenuBanco 1----------
                             if(opcaoMenuBanco == 2){
-                                if (contaCli != null && contaCli.getCli() != null){
-                                    contaCli.getCli().editarDadosClienteBanco();
-                                }
-                                else {
-                                    System.out.println("\n\t>>> Você Deve Associar Um Cliente No Menu Contas <<<");
-                                }
-                            }//----------Fim da opcaoMenuBanco 2----------
-                            if (opcaoMenuBanco == 3){
-                                System.out.println("\n\tApagar Cliente");
-                                apagarCliente();
-                            }//----------Fim da opcaoMenuBanco 3----------
-                            if(opcaoMenuBanco == 4){
                                 System.out.println("\n\tMenu Cartões");
                                 do{
                                     System.out.println("\n0 - Voltar");
                                     System.out.println("1 - Gerar Cartão de Credito");
                                     System.out.println("2 - Consultar Cartões");
-                                    System.out.println("3 - Apagar Cartão");
+
                                     if (cartao != null){
+                                        System.out.println("3 - Apagar Cartão");
                                         System.out.println("4 - Editar Cartão");
                                         System.out.println("5 - Alterar Limite");
                                         System.out.println("6 - Operações");
@@ -207,6 +234,7 @@ public class Menu {
                                     else {
                                         System.out.println("7 - Associar Cliente a Cartão");
                                     }
+
                                     System.out.print("\nEscolha a Opção Desejada: ");
                                     opcaoMenuCartao = entrada.nextInt();
 
@@ -305,8 +333,8 @@ public class Menu {
                                         }
                                     }
                                 }while (opcaoMenuCartao != 0);
-                            }//----------Fim da opcaoMenuBanco 3----------
-                            if (opcaoMenuBanco == 5){
+                            }//----------Fim da opcaoMenuBanco 2----------
+                            if (opcaoMenuBanco == 3){
                                 System.out.println("\n\tContas");
                                 do{
                                     System.out.println("\n0 - Voltar");
@@ -343,14 +371,10 @@ public class Menu {
                                     }
                                     else{
                                         if (opcaoMenuContas == 1){
-                                            ContaOrdem co = new ContaOrdem();
-                                            listaConta.add(co);
-                                            System.out.println("\nConta Ordem Criada Com Sucesso!\nNumero de Conta: " + co.getNumeroDeConta());
+                                            criaContaOrdem();
                                         }
                                         if (opcaoMenuContas == 2){
-                                            ContaPolpanca cp = new ContaPolpanca();
-                                            listaConta.add(cp);
-                                            System.out.println("\nConta Polpança Criada Com Sucesso!\nNumero de Conta: " + cp.getNumeroDeConta());
+                                            criaContaPolpanca();
                                         }
                                         if (opcaoMenuContas == 3){
                                             System.out.println("\n\tVer Todas as Contas");
@@ -399,7 +423,7 @@ public class Menu {
                                         }
                                     }
                                 }while (opcaoMenuContas != 0);
-                            }//----------Fim da opcaoMenuBanco 4----------
+                            }//----------Fim da opcaoMenuBanco 3----------
                         }
                     }while(opcaoMenuBanco != 0);
                 }//----------Fim da opcaoMenuInicial 3----------
@@ -429,6 +453,18 @@ public class Menu {
     }
     private void fazLevantamento(){
         contaCli.fazerLevantamento();
+    }
+//====================================================================================================================
+    private void criaContaPolpanca(){
+        ContaPolpanca cp = new ContaPolpanca();
+        listaConta.add(cp);
+        System.out.println("\nConta Polpança Criada Com Sucesso!\nNumero de Conta: " + cp.getNumeroDeConta());
+    }
+//====================================================================================================================
+    private void criaContaOrdem(){
+        ContaOrdem co = new ContaOrdem();
+        listaConta.add(co);
+        System.out.println("\nConta Ordem Criada Com Sucesso!\nNumero de Conta: " + co.getNumeroDeConta());
     }
 //====================================================================================================================
     private int entradaInteiro(String mensagem){
@@ -478,33 +514,7 @@ public class Menu {
             listaClientes.remove(cli);
             System.out.println("\nCliente Apagado Com Sucesso!");
         }
-        /*
-        int paraApagarCliente = pesqCliIndice(num);
-
-        if (paraApagarCliente == -1){
-            System.out.println("\nCliente Invalido ou Inexistente");
-        }
-        else{
-            listaClientes.remove(paraApagarCliente);
-            System.out.println("\nCliente Apagado Com Sucesso!\n");
-        }
-         */
     }
-//====================================================================================================================
-    /*
-    private int pesqCliIndice(int num){
-        int indice = -1;
-
-        for (int i = 0; i < listaClientes.size(); i++){
-            Cliente cli = (Cliente) listaClientes.get(i);
-
-            if (cli.getNumeroCliente() == num){
-                indice = 1;
-            }
-        }
-        return indice;
-    }
-    */
 //====================================================================================================================
     private void associaClienteCartao(){
         int cart = entradaInteiro("ID do Cartão: ");

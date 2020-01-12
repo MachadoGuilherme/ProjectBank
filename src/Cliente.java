@@ -17,6 +17,7 @@ public class Cliente {
     private Cartoes ca;
 //============================================================================================================
     public void informacaoCliente(){
+
         if (getClientePrivado() == 1){
             gestorContaUm();
         }
@@ -24,7 +25,7 @@ public class Cliente {
             gestorContaDois();
         }
 
-        System.out.println("Seus Dados\n");
+        System.out.println("\t•• Dados do Cliente ••\n");
         System.out.println("Numero de Cliente: " + getNumeroCliente());
         System.out.println("Nome: " + getNomeCliente());
         System.out.println("Telefone: " + getTelefone());
@@ -110,14 +111,14 @@ public class Cliente {
     }
 //============================================================================================================
     public void gestorContaUm(){
-        System.out.println("\n\tCliente VIP\n\nSeu Gestor de Conta é\n");
+        System.out.println("\n\tCliente VIP\n\n\t•• Seu Gestor de Conta é ••\n");
         System.out.println("Gestor: Hulk");
         System.out.println("Telefone: 987 654 321\nRamal: 123");
         System.out.println("e-mail: hulk@mybank.com\n");
     }
 //============================================================================================================
     public void gestorContaDois(){
-        System.out.println("\nSeu Gestor de Conta é\n");
+        System.out.println("\n\t•• Seu Gestor de Conta é ••\n");
         System.out.println("Lucy");
         System.out.println("Telefone: 001 002 003\nRamal: 321");
         System.out.println("e-mail: lucy@mybank.com\n");

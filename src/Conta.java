@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.function.DoubleToIntFunction;
 
 public abstract class Conta {
 
@@ -19,7 +20,10 @@ public abstract class Conta {
     }
 //======================================================================================================
     public void informacao(){
-        System.out.println("\nTipo de Conta: " + toString() + "\nNumero De Conta: " + numeroDeConta);
+        System.out.println("\n\t----------------------");
+        System.out.println("\t|•• Dados de Conta ••|");
+        System.out.println("\t----------------------\n");
+        System.out.println("Tipo de Conta: " + toString() + "\nNumero De Conta: " + numeroDeConta);
         if (cli == null){
             System.out.println("\n\tSem Cliente Associado!\n");
         }

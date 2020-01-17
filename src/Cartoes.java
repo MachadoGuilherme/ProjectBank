@@ -5,7 +5,7 @@ public abstract class Cartoes {
     private static int nextNumber = 0;
 
     private int idCartao;
-    private int numeroCartao = 0;
+    private long numeroCartao = 0;
     private String nomeCartao;
     private String tipoCartao = "CREDITO";
     private double limiteCartao = 0;
@@ -119,10 +119,12 @@ public abstract class Cartoes {
 
     }
 //================================================================================================================
-    public int getNumeroCartao() {
+    public long getNumeroCartao() {
+
         return numeroCartao;
     }
-    public void setNumeroCartao(int numeroCartao) {
+    public void setNumeroCartao(long numeroCartao) {
+
         this.numeroCartao = numeroCartao;
     }
 

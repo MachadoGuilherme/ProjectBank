@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Cliente {
 
     private String nomeCliente = "";
-    private int telefone = 0;
+    private String telefone = "";
     private String email = "";
     private String profissao = "";
     private int numeroCliente = 0;
@@ -59,14 +59,16 @@ public class Cliente {
             }
         }while (escolhaClientePrivate != 0);
 
+        entrada.nextLine();
         System.out.print("\nNome: ");
-        nomeCliente = entrada.next().toUpperCase();
+        nomeCliente = entrada.nextLine().toUpperCase();
         System.out.print("Telefone: ");
-        telefone = entrada.nextInt();
+        telefone = entrada.nextLine().toLowerCase();
         System.out.print("e-mail: ");
         email = entrada.next().toLowerCase();
+        entrada.nextLine();
         System.out.print("Profissão: ");
-        profissao = entrada.next().toUpperCase();
+        profissao = entrada.nextLine().toUpperCase();
         do{
             System.out.print("\nSaldo Inicial: ");
             saldoInicial = entrada.nextDouble();
@@ -90,11 +92,12 @@ public class Cliente {
         System.out.print("\nNome Anterior: " + getNomeCliente() + "\nNovo Nome: ");
         setNomeCliente(entrada.nextLine().toUpperCase());
         System.out.print("Telefone Anterior: " + getTelefone() + "\nNovo Telenofe: ");
-        setTelefone(entrada.nextInt());
+        setTelefone(entrada.nextLine().toLowerCase());
         System.out.print("e-mail Anterior: " + getEmail() + "\nNovo e-mail: ");
         setEmail(entrada.next().toLowerCase());
+        entrada.nextLine();
         System.out.print("Profissão Anterior: " + getProfissao() + "\nNova Profissão: ");
-        setProfissao(entrada.next().toUpperCase());
+        setProfissao(entrada.nextLine().toUpperCase());
 
         System.out.println("\nDados Alterado com Sucesso!");
     }
@@ -103,7 +106,7 @@ public class Cliente {
         Scanner entrada = new Scanner(System.in);
 
         System.out.print("\nTelefone Anterior: " + getTelefone() + "\nNovo Telenofe: ");
-        setTelefone(entrada.nextInt());
+        setTelefone(entrada.nextLine().toLowerCase());
         System.out.print("e-mail Anterior: " + getEmail() + "\nNovo e-mail: ");
         setEmail(entrada.next().toLowerCase());
 
@@ -131,10 +134,10 @@ public class Cliente {
         this.nomeCliente = nomeCliente;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 

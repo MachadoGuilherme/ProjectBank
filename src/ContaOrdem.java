@@ -6,7 +6,9 @@ public class ContaOrdem extends Conta{
 //================================================================================================================
     public void informacao(){
         super.informacao();
-        System.out.println("\nSaldo Atual na Conta: " + getCli().getSaldoAtual() + "€");
+        if (getCli() != null) {
+            System.out.println("\nSaldo Atual na Conta: " + getCli().getSaldoAtual() + "€");
+        }
     }
 //================================================================================================================
     public void fazerLevantamento(){

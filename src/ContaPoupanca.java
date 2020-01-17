@@ -1,8 +1,8 @@
-public class ContaPolpanca extends Conta {
+public class ContaPoupanca extends Conta {
 
     private double juros;
 //=================================================================================================================
-    public ContaPolpanca(){
+    public ContaPoupanca(){
         super();
         juros = 1.15;
     }
@@ -24,7 +24,9 @@ public class ContaPolpanca extends Conta {
 //=================================================================================================================
     public void informacao(){
         super.informacao();
-        System.out.println("\nSaldo Atual na Conta: " + getSaldo() + "€");
+        if (getCli() != null) {
+            System.out.println("\nSaldo Atual na Conta: " + getSaldo() + "€");
+        }
     }
 //=================================================================================================================
     public double getSaldo(){
@@ -34,7 +36,7 @@ public class ContaPolpanca extends Conta {
     }
 //=================================================================================================================
     public String toString(){
-        return new String("Conta Polpança");
+        return new String("Conta Poupança");
     }
 //=================================================================================================================
 }

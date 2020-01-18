@@ -7,7 +7,7 @@ public abstract class Cartoes {
     private int idCartao;
     private long numeroCartao = 0;
     private String nomeCartao;
-    private String tipoCartao = "CREDITO";
+    private String tipoCartao = "";
     private double limiteCartao = 0;
     private double saldoCartaoCredito = 0;
     private double comprasCartaoCredito = 0;
@@ -27,12 +27,19 @@ public abstract class Cartoes {
 //================================================================================================================
     public void consultaCartoes(){
 
-        System.out.println("\n\tMeus Dados de Cartão\n\nCartão: " + getMarcaCartao());
-        System.out.println("Nome no Cartão: " + getNomeCartao());
-        System.out.println("Numero do Cartão: " + getNumeroCartao());
-        System.out.println("Limite do Cartão: " + getLimiteCartao() + "€");
-        System.out.println("Saldo no Cartão: " + getSaldoCartaoCredito() + "€");
-        System.out.println("Tipo de Cartão: " + getTipoCartao());
+        System.out.println("\n\t•• Dados de Cartão ••\n\nCartão: " + getMarcaCartao());
+        if (getLimiteCartao() != 0){
+            System.out.println("Nome no Cartão: " + getNomeCartao());
+            System.out.println("Numero do Cartão: " + getNumeroCartao());
+            System.out.println("Limite do Cartão: " + getLimiteCartao() + "€");
+            System.out.println("Saldo no Cartão: " + getSaldoCartaoCredito() + "€");
+            System.out.println("Tipo de Cartão: " + getTipoCartao());
+        }
+        else {
+            System.out.println("Nome no Cartão: " + getNomeCartao());
+            System.out.println("Numero do Cartão: " + getNumeroCartao());
+            System.out.println("Tipo de Cartão: " + getTipoCartao());
+        }
 
     }
 //================================================================================================================

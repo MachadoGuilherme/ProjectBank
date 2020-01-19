@@ -18,6 +18,10 @@ public abstract class Conta {
         cli = null;
     }
 //======================================================================================================
+    public void infoTipoConta(){
+        System.out.println("\n" + toString() + " Está Selecionada");
+    }
+//======================================================================================================
     public void informacao(){
         System.out.println("\n\t----------------------");
         System.out.println("\t|•• Dados de Conta ••|");

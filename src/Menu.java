@@ -21,7 +21,7 @@ public class Menu {
 //====================================================================================================================
     public void inicioSistema() {
 
-        System.out.println("\tBem Vindo ao My Bank\n");
+        System.out.println("\n\tBem Vindo ao My Bank");
 
         Scanner entrada = new Scanner(System.in);
 
@@ -36,10 +36,11 @@ public class Menu {
         int menuOperacaoCartaoCredito;
 
         Cliente cl = new Cliente();
-        //Cartoes ca = new Cartoes();
 //====================================================================================================================
         do {
-            System.out.println("\n##-Menu Inicial-##\n");
+            System.out.println("\n\t------------------");
+            System.out.println("\t##-Menu Inicial-##");
+            System.out.println("\t------------------\n");
             System.out.println("1 - Informações do Banco");
             System.out.println("2 - Cliente");
             System.out.println("3 - Banco");
@@ -70,7 +71,7 @@ public class Menu {
                             System.out.println("1 - Operações Bancarias");
                             System.out.println("2 - Meus Dados");
                             System.out.println("3 - Alterar Meus Dados");
-                            System.out.println("\nConta " + contaCli.getNumeroDeConta() + " Está Selecionada");
+                            contaCli.infoTipoConta();
                             System.out.print("\nEscolha a Opção Desejada: ");
                             opcaoMenuCliente = entrada.nextInt();
 
@@ -84,7 +85,7 @@ public class Menu {
                                         System.out.println("1 - Depositar");
                                         System.out.println("2 - Levantar");
                                         System.out.println("3 - Saldo");
-                                        if (cartao != null){
+                                        if (cartao != null && cartao.getLimiteCartao() != 0){
                                             System.out.println("4 - Cartão Credito");
                                         }
                                         System.out.print("\nEscolha a Opção Desejada: ");
@@ -104,8 +105,8 @@ public class Menu {
                                                 System.out.println("Seu Saldo é: " + contaCli.getCli().getSaldoAtual() + "€");
                                             }
                                             if (opcaoMenuOperacoes == 4){
-                                                if (cartao != null){
-                                                    System.out.println("\n\tOperações Cartão de Credito\n");
+                                                if (cartao != null && cartao.getLimiteCartao() != 0){
+                                                    System.out.println("\n\t∞ Operações Cartão de Credito ∞\n");
                                                     do {
                                                         System.out.println("0 - Voltar");
                                                         System.out.println("1 - Compras");
@@ -141,14 +142,14 @@ public class Menu {
                                     }while (opcaoMenuOperacoes != 0);
                                 }//----------Fim da opcaoMenuCliente 1----------
                                 if(opcaoMenuCliente == 2) {
-                                    System.out.println("\n\tMeus Dados");
+                                    System.out.println("\n\t∞ Meus Dados ∞");
                                     contaCli.informacao();
                                     if (cartao != null){
                                         cartao.consultaCartoes();
                                     }
                                 }//----------Fim da opcaoMenuCliente 2----------
                                 if(opcaoMenuCliente == 3){
-                                    System.out.println("\n\tAlterar Meus Dados\n");
+                                    System.out.println("\n\t∞ Alterar Meus Dados ∞\n");
                                     contaCli.getCli().editarDadosCliente();
                                 }//----------Fim da opcaoMenuCliente 3----------
                             }
@@ -177,7 +178,7 @@ public class Menu {
                         }
                         else{
                             if (opcaoMenuBanco == 1){
-                                System.out.println("\n\tMenu Cliente");
+                                System.out.println("\n\t≈≈ Menu Cliente ≈≈");
                                 do {
                                     System.out.println("\n0 - Voltar");
                                     System.out.println("1 - Cadastro de Cliente");
@@ -187,8 +188,6 @@ public class Menu {
 
                                     if (contaCli != null && contaCli.getCli() != null && cartao != null) {
                                         System.out.println("\nCliente " + contaCli.getCli().getNomeCliente());
-                                        System.out.println("Conta " + contaCli.getNumeroDeConta() + " Está Selecionada");
-                                        System.out.println("Cartão " + cartao.getTipoCartao());
                                     }
 
                                     System.out.print("\nEscolha a Opção Desejada: ");
@@ -225,60 +224,62 @@ public class Menu {
                                 }while (opcaoMenuCli != 0) ;
                             }//----------Fim da opcaoMenuBanco 1----------
                             if(opcaoMenuBanco == 2){
-                                System.out.println("\n\tMenu Cartões");
+                                System.out.println("\n\t≈≈ Menu Cartões ≈≈");
                                 if (contaCli != null && contaCli.getCli() != null){
 
                                     do{
                                         System.out.println("\n0 - Voltar");
-                                        System.out.println("1 - Gerar Cartão de Credito");
-                                        System.out.println("2 - Consultar Cartões");
+                                        System.out.println("1 - Gerar Cartão de Debito");
+                                        System.out.println("2 - Gerar Cartão de Credito");
+                                        System.out.println("3 - Consultar Cartões");
 
                                         if (cartao == null){
-                                            System.out.println("8 - Associar Cliente a Cartão");
+                                            System.out.println("9 - Associar Cliente a Cartão");
                                         }
 
                                         if (cartao != null && cartao.getLimiteCartao() == 0){
-                                            System.out.println("3 - Apagar Cartão");
-                                            System.out.println("4 - Editar Cartão");
-                                            System.out.println("7 - Mudar Cartão");
-                                            System.out.println("\nConta " + contaCli.getNumeroDeConta() + " Está Selecionada");
-                                            System.out.println("Cliente " + contaCli.getCli().getNomeCliente());
-                                            System.out.println("ID Cartão " + cartao.getIdCartao() + " Tipo " + cartao.getTipoCartao());
+                                            System.out.println("4 - Apagar Cartão");
+                                            System.out.println("5 - Editar Cartão");
+                                            System.out.println("8 - Mudar Cartão");
+                                            System.out.println("\nCliente " + contaCli.getCli().getNomeCliente());
+                                            System.out.println("Cartão: " + cartao.getTipoCartao());
                                         }
 
                                         if (cartao != null && cartao.getLimiteCartao() != 0){
-                                            System.out.println("3 - Apagar Cartão");
-                                            System.out.println("4 - Editar Cartão");
-                                            System.out.println("5 - Alterar Limite");
-                                            System.out.println("6 - Operações");
-                                            System.out.println("7 - Mudar Cartão");
-                                            System.out.println("\nConta " + contaCli.getNumeroDeConta() + " Está Selecionada");
-                                            System.out.println("Cliente " + contaCli.getCli().getNomeCliente());
-                                            System.out.println("ID Cartão " + cartao.getIdCartao() + " Tipo " + cartao.getTipoCartao());
+                                            System.out.println("4 - Apagar Cartão");
+                                            System.out.println("5 - Editar Cartão");
+                                            System.out.println("6 - Alterar Limite");
+                                            System.out.println("7 - Operações");
+                                            System.out.println("8 - Mudar Cartão");
+                                            System.out.println("\nCliente " + contaCli.getCli().getNomeCliente());
+                                            System.out.println("Cartão: " + cartao.getTipoCartao());
                                         }
 
                                         System.out.print("\nEscolha a Opção Desejada: ");
                                         opcaoMenuCartao = entrada.nextInt();
 
-                                        if(opcaoMenuCartao < 0 || opcaoMenuCartao > 8) {
+                                        if(opcaoMenuCartao < 0 || opcaoMenuCartao > 9) {
                                             System.out.println("\n\tOpcao Invalida!\n");
                                         }
                                         else {
-                                            if(opcaoMenuCartao == 1){
-                                                cardCredit();
+                                            if (opcaoMenuCartao == 1){
+                                                cardDebit();
                                             }
                                             if(opcaoMenuCartao == 2){
+                                                cardCredit();
+                                            }
+                                            if(opcaoMenuCartao == 3){
                                                 for (int i=0; i < listaCartoes.size(); i++){
                                                     Cartoes c = (Cartoes) listaCartoes.get(i);
                                                     System.out.println("\n\tConsulta de Cartões");
                                                     c.consultaCartoes();
                                                 }
                                             }
-                                            if(opcaoMenuCartao == 3){
+                                            if(opcaoMenuCartao == 4){
                                                 System.out.println("\n\tApagar Cartão");
                                                 apagarCartao();
                                             }
-                                            if(opcaoMenuCartao == 4){
+                                            if(opcaoMenuCartao == 5){
                                                 if (cartao != null){
                                                     System.out.println("\n\tEditar Cartão\n");
                                                     editarCartao();
@@ -287,7 +288,7 @@ public class Menu {
                                                     System.out.println("\n\tNão Existe Cartão Associado!");
                                                 }
                                             }
-                                            if(opcaoMenuCartao == 5){
+                                            if(opcaoMenuCartao == 6){
                                                 if (cartao != null){
                                                     System.out.println("\n\tAlterar Limite do Cartão\n");
                                                     alterarLimiteCartao();
@@ -296,7 +297,7 @@ public class Menu {
                                                     System.out.println("\n\tNão Existe Cartão Associado!");
                                                 }
                                             }
-                                            if(opcaoMenuCartao == 6){
+                                            if(opcaoMenuCartao == 7){
                                                 if (cartao != null){
                                                     System.out.println("\n\tOperações\n");
                                                     do {
@@ -330,11 +331,11 @@ public class Menu {
                                                     System.out.println("\n\tNão Existe Cartão Associado!");
                                                 }
                                             }
-                                            if (opcaoMenuCartao == 8){
+                                            if (opcaoMenuCartao == 9){
                                                 System.out.println("\n\tAssociar Cartão Para o Cliente " + contaCli.getCli().getNomeCliente());
                                                 associaClienteCartao();
                                             }
-                                            if (opcaoMenuCartao == 7){
+                                            if (opcaoMenuCartao == 8){
                                                 System.out.println("\n\tEscolher Outro Cartão Para o Cliente " + contaCli.getCli().getNomeCliente());
                                                 associaClienteCartao();
                                             }
@@ -346,7 +347,7 @@ public class Menu {
                                 }
                             }//----------Fim da opcaoMenuBanco 2----------
                             if (opcaoMenuBanco == 3){
-                                System.out.println("\n\tContas");
+                                System.out.println("\n\t≈≈ Contas ≈≈");
                                 do{
                                     System.out.println("\n0 - Voltar");
                                     System.out.println("1 - Criar Conta Ordem");
@@ -364,13 +365,13 @@ public class Menu {
                                         System.out.println("7 - Depositar");
                                         System.out.println("8 - Levantar");
                                         System.out.println("9 - Mudar Conta");
-                                        System.out.println("\nConta " + contaCli.getNumeroDeConta() + " Está Selecionada");
+                                        contaCli.infoTipoConta();
                                         System.out.println("Cliente " + contaCli.getCli().getNomeCliente());
                                     }
                                     else{
                                         if (contaCli != null){
                                             System.out.println("9 - Mudar Conta");
-                                            System.out.println("\nConta " + contaCli.getNumeroDeConta() + " Está Selecionada");
+                                            contaCli.infoTipoConta();
                                         }
                                     }
 
@@ -623,14 +624,12 @@ private Cliente pesquisarCliente(int numeroCliente) {
     private void gerandoConta(){
         criaContaOrdem();
 
-
-        System.out.println("\n\tConfirme o Numero de Conta Deste Cliente");
+        System.out.println("\n\t≥≥≥≥ Confirme o Numero de Conta Deste Cliente ≤≤≤≤");
         escolheContaAtiva();
-        System.out.println("\n\tConfirme o Numero Deste Cliente");
-        associarClienteConta();/*
-        System.out.println("\n\tConfirme o ID do Cartão Deste Cliente");
+        System.out.println("\n\t≥≥≥≥ Confirme o Numero Deste Cliente ≤≤≤≤");
+        associarClienteConta();
+        System.out.println("\n\t≥≥≥≥ Confirme o ID do Cartão Deste Cliente ≤≤≤≤");
         associaClienteCartao();
-         */
     }
 //====================================================================================================================
     private void cardDebit(){
@@ -638,7 +637,7 @@ private Cliente pesquisarCliente(int numeroCliente) {
 
         CartaoDebito cac = new CartaoDebito();
 
-        System.out.println("\n\tGerar Cartão de Debito");
+        System.out.println("\n\t≠≠ Gerar Cartão de Debito ≠≠");
         System.out.println("\nNome no Cartão: ");
         cac.setNomeCartao(entrada.nextLine().toUpperCase());
         System.out.println("Numero do Cartão: ");
@@ -654,7 +653,7 @@ private Cliente pesquisarCliente(int numeroCliente) {
 
         CartaoCredito cac = new CartaoCredito();
 
-        System.out.println("\n\tGerar Cartão de Credito");
+        System.out.println("\n\t≠≠ Gerar Cartão de Credito ≠≠");
         System.out.println("\nNome no Cartão: ");
         cac.setNomeCartao(entrada.nextLine().toUpperCase());
         System.out.println("Numero do Cartão: ");

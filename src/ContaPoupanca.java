@@ -7,11 +7,6 @@ public class ContaPoupanca extends Conta {
         juros = 1.15;
     }
 //=================================================================================================================
-    public boolean levantar(int valor){
-        setMensagemDaUltimaOperacao("\n\tAinda Não Pode Realizar Levantamentos");
-        return false;
-    }
-//=================================================================================================================
     public void fazerLevantamento(){
 
         System.out.println("\n\tNão é Possivel Realizar Levantamentos");

@@ -27,20 +27,6 @@ public class ContaOrdem extends Conta{
 
     }
 //================================================================================================================
-public boolean levantar(int valor) {
-
-    boolean conseguiuLevantar = true;
-
-    if (valor <= getSaldoConta()) {
-        super.levantamento(valor);
-    }
-    else {
-        conseguiuLevantar = false;
-        setMensagemDaUltimaOperacao("\tNão tem saldo suficiente!!\n");
-    }
-    return conseguiuLevantar;
-}
-//================================================================================================================
     public String toString(){
         return new String("Conta Ordem");
     }

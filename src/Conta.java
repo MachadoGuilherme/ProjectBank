@@ -36,26 +36,14 @@ public abstract class Conta {
     }
 //======================================================================================================
     public void depositar(double valor){
-        /*
-        cli.setSaldoAtual(cli.getSaldoAtual() + lerValor("\nValor a Deposi: "));
 
-        setSaldoConta(saldoConta + valor);
-        cli.setSaldoAtual((cli.getSaldoAtual()) + saldoConta);
-        System.out.println("\tDeposito Efetuado!");
-        System.out.println("\nSeu Saldo é: " + cli.getSaldoAtual() + "€");
-        */
     }
     public void fazerDeposito(){
 
     }
 //======================================================================================================
     public void levantamento(double valor){
-        /*
-        setSaldoConta(saldoConta + valor);
-        cli.setSaldoAtual((cli.getSaldoAtual()) - saldoConta);
-        System.out.println("\tLevantamento Efetuado!");
-        System.out.println("\nSeu Saldo é: " + cli.getSaldoAtual() + "€");
-        */
+
     }
     public void fazerLevantamento(){
 

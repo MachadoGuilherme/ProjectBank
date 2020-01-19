@@ -102,7 +102,7 @@ public class Menu {
                                                 fazLevantamento();
                                             }
                                             if (opcaoMenuOperacoes == 3){
-                                                System.out.println("Seu Saldo é: " + contaCli.getCli().getSaldoAtual() + "€");
+                                                System.out.println("\nSeu Saldo é: " + contaCli.getCli().getSaldoAtual() + "€");
                                             }
                                             if (opcaoMenuOperacoes == 4){
                                                 if (cartao != null && cartao.getLimiteCartao() != 0){
@@ -116,15 +116,15 @@ public class Menu {
                                                         menuOperacaoCartaoCredito = entrada.nextInt();
 
                                                         if(menuOperacaoCartaoCredito < 0 || menuOperacaoCartaoCredito > 3){
-                                                            System.out.println("\n\tOpcao Invalida!\n");
+                                                            System.out.println("\n\tOpcao Invalida!");
                                                         }
                                                         else {
                                                             if (menuOperacaoCartaoCredito == 1){
-                                                                System.out.println("\n\tCompras\n");
+                                                                System.out.println("\n\tCompras");
                                                                 fazCompraCartao();
                                                             }
                                                             if (menuOperacaoCartaoCredito == 2){
-                                                                System.out.println("\n\tPagamento Cartão Credito");
+                                                                System.out.println("\n\tPagamento Cartão Credito\n");
                                                                 fazPagamentoCartao();
                                                             }
                                                             if (menuOperacaoCartaoCredito == 3){
@@ -149,7 +149,7 @@ public class Menu {
                                     }
                                 }//----------Fim da opcaoMenuCliente 2----------
                                 if(opcaoMenuCliente == 3){
-                                    System.out.println("\n\t∞ Alterar Meus Dados ∞\n");
+                                    System.out.println("\n\t∞ Alterar Meus Dados ∞");
                                     contaCli.getCli().editarDadosCliente();
                                 }//----------Fim da opcaoMenuCliente 3----------
                             }
@@ -299,7 +299,7 @@ public class Menu {
                                             }
                                             if(opcaoMenuCartao == 7){
                                                 if (cartao != null){
-                                                    System.out.println("\n\tOperações\n");
+                                                    System.out.println("\n\t∞ Operações Cartão de Credito ∞\n");
                                                     do {
                                                         System.out.println("0 - Voltar");
                                                         System.out.println("1 - Compras");
@@ -309,15 +309,15 @@ public class Menu {
                                                         menuOperacaoCartaoCredito = entrada.nextInt();
 
                                                         if(menuOperacaoCartaoCredito < 0 || menuOperacaoCartaoCredito > 3){
-                                                            System.out.println("\n\tOpcao Invalida!\n");
+                                                            System.out.println("\n\tOpcao Invalida!");
                                                         }
                                                         else {
                                                             if (menuOperacaoCartaoCredito == 1){
-                                                                System.out.println("\n\tCompras\n");
+                                                                System.out.println("\n\tCompras");
                                                                 fazCompraCartao();
                                                             }
                                                             if (menuOperacaoCartaoCredito == 2){
-                                                                System.out.println("\n\tPagamento Cartão Credito");
+                                                                System.out.println("\n\tPagamento Cartão Credito\n");
                                                                 fazPagamentoCartao();
                                                             }
                                                             if (menuOperacaoCartaoCredito == 3){
@@ -331,12 +331,12 @@ public class Menu {
                                                     System.out.println("\n\tNão Existe Cartão Associado!");
                                                 }
                                             }
-                                            if (opcaoMenuCartao == 9){
-                                                System.out.println("\n\tAssociar Cartão Para o Cliente " + contaCli.getCli().getNomeCliente());
-                                                associaClienteCartao();
-                                            }
                                             if (opcaoMenuCartao == 8){
                                                 System.out.println("\n\tEscolher Outro Cartão Para o Cliente " + contaCli.getCli().getNomeCliente());
+                                                associaClienteCartao();
+                                            }
+                                            if (opcaoMenuCartao == 9){
+                                                System.out.println("\n\tAssociar Cartão Para o Cliente " + contaCli.getCli().getNomeCliente());
                                                 associaClienteCartao();
                                             }
                                         }
@@ -451,12 +451,15 @@ public class Menu {
     }
 //====================================================================================================================
     private void fazCompraCartao(){
+
         cartao.fazerCompraCartao();
     }
     private void fazPagamentoCartao(){
+
         cartao.fazerPagamentoCartao();
     }
     private void alterarLimiteCartao(){
+
         cartao.alteraLimiteCartao();
     }
     private void editarCartao(){
@@ -464,9 +467,11 @@ public class Menu {
     }
 //====================================================================================================================
     private void fazDeposito(){
+
         contaCli.fazerDeposito();
     }
     private void fazLevantamento(){
+
         contaCli.fazerLevantamento();
     }
 //====================================================================================================================

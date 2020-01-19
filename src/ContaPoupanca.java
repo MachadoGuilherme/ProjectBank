@@ -19,7 +19,10 @@ public class ContaPoupanca extends Conta {
 //=================================================================================================================
     public void fazerDeposito(){
 
-        depositar(lerValor("Valor do Deposito: "));
+        getCli().setSaldoAtual(getCli().getSaldoAtual() + lerValor("\nValor Deposito: "));
+        System.out.println("\tDeposito Efetuado!");
+        System.out.println("\nSeu Saldo é: " + getCli().getSaldoAtual() + "€");
+
     }
 //=================================================================================================================
     public void informacao(){

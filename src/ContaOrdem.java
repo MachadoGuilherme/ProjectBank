@@ -13,12 +13,18 @@ public class ContaOrdem extends Conta{
 //================================================================================================================
     public void fazerLevantamento(){
 
-        levantamento(lerValor("\nValor Levantamento: "));
+        getCli().setSaldoAtual(getCli().getSaldoAtual() - lerValor("\nValor Levantamento: "));
+        System.out.println("\tLevantamento Efetuado!");
+        System.out.println("\nSeu Saldo é: " + getCli().getSaldoAtual() + "€");
+
     }
 //================================================================================================================
     public void fazerDeposito(){
 
-        depositar(lerValor("\nValor A Depositar: "));
+        getCli().setSaldoAtual(getCli().getSaldoAtual() + lerValor("\nValor Deposito: "));
+        System.out.println("\tDeposito Efetuado!");
+        System.out.println("\nSeu Saldo é: " + getCli().getSaldoAtual() + "€");
+
     }
 //================================================================================================================
 public boolean levantar(int valor) {

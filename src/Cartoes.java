@@ -73,7 +73,7 @@ public abstract class Cartoes {
         Scanner entrada = new Scanner(System.in);
 
         if (getSaldoCartaoCredito() == getLimiteCartao()){
-            System.out.println("\n\t>>> Não Tem Valores a Pagar! <<<\n");
+            System.out.println("\t>>> Não Tem Valores a Pagar! <<<\n");
         }
         else{
             valorPagar = limiteCartao - saldoCartaoCredito;
@@ -85,7 +85,7 @@ public abstract class Cartoes {
             }
             else{
                 saldoCartaoCredito = pagamentoCartaoCredito + saldoCartaoCredito;
-                System.out.println("Pagamento Efetuado");
+                System.out.println("\nPagamento Efetuado");
                 System.out.println("Saldo Atual no Cartão: " + getSaldoCartaoCredito() + "€\n");
             }
         }
@@ -116,9 +116,9 @@ public abstract class Cartoes {
 
         System.out.println("Cartão: " + getMarcaCartao());
         System.out.print("Nome Anterior no Cartão: " + getNomeCartao() + "\nNovo Nome: ");
-        nomeCartao = entrada.next().toUpperCase();
+        setNomeCartao(entrada.nextLine().toUpperCase());
         System.out.print("Numero Anterior no Cartão: " + getNumeroCartao() + "\nNovo Numero: ");
-        numeroCartao = entrada.nextInt();
+        setNumeroCartao(entrada.nextLong());
 
         System.out.println("\nDados Alterado com Sucesso!");
     }

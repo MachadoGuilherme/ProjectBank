@@ -31,6 +31,7 @@ public class Cliente {
         System.out.println("Telefone: " + getTelefone());
         System.out.println("e-mail: " + getEmail());
         System.out.println("Profissão: " + getProfissao());
+
     }
 //============================================================================================================
     public void cadastroCliente(){
@@ -186,6 +187,7 @@ public class Cliente {
     public void setCa(Cartoes ca) {
         this.ca = ca;
     }
+
 
     public int getClientePrivado() {
         return clientePrivado;
